@@ -67,7 +67,7 @@
 					</header>
 				</section>
 
-			<!-- Highlights -->
+			<!-- Highlights 
 				<section class="wrapper style1">
 					<div class="container">
 						<div class="row 200%">
@@ -95,7 +95,7 @@
 						</div>
 					</div>
 				</section>
-
+			-->
 			<!-- Footer -->
 				<div id="footer">
 					<div class="container">
