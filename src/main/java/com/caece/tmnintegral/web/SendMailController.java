@@ -36,12 +36,12 @@ public class SendMailController {
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String now = (new Date()).toString();
-        logger.info("Returning hello view with " + now);
+        this.sendMail(request.getParameter("name"), 
+        		request.getParameter("email"), 
+        		request.getParameter("motivo"),
+        		request.getParameter("message"));
         
-        this.sendMail("AGUS", "agussteko@gmail.com", "TEST MAIL", "Hola, llegaste");
-        
-        return new ModelAndView("WEB-INF/views/hello.jsp", "now", now);
+        return new ModelAndView("");
 
     }
     

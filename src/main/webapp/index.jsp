@@ -115,31 +115,33 @@
 							</section>
 							<section class="6u 12u(narrower)">
 								<h3>Contáctenos</h3>
-								<div class="row 50%">
-									<div class="6u 12u(mobilep)">
-										<input type="text" name="name" id="name" placeholder="Nombre" />
+								<form action="/tmnintegral/contacto.htm">
+									<div class="row 50%">
+										<div class="6u 12u(mobilep)">
+											<input type="text" name="name" id="name" placeholder="Nombre" />
+										</div>
+										<div class="6u 12u(mobilep)">
+											<input type="email" name="email" id="email" placeholder="E-mail" />
+										</div>
 									</div>
-									<div class="6u 12u(mobilep)">
-										<input type="email" name="email" id="email" placeholder="E-mail" />
+									<div class="row 50%">
+										<div class="12u">
+											<input type="text" name="motivo" id="motivo" placeholder="Motivo de Contacto" />
+										</div>
 									</div>
-								</div>
-								<div class="row 50%">
-									<div class="12u">
-										<input type="text" name="motivo" id="motivo" placeholder="Motivo de Contacto" />
+									<div class="row 50%">
+										<div class="12u">
+											<textarea name="message" id="message" placeholder="Mensaje" rows="5"></textarea>
+										</div>
 									</div>
-								</div>
-								<div class="row 50%">
-									<div class="12u">
-										<textarea name="message" id="message" placeholder="Mensaje" rows="5"></textarea>
+									<div class="row 50%">
+										<div class="12u">
+											<ul class="actions">
+												<li><input type="submit" class="button alt" value="Enviar" /></li>
+											</ul>
+										</div>
 									</div>
-								</div>
-								<div class="row 50%">
-									<div class="12u">
-										<ul class="actions">
-											<li><input type="submit" class="button alt" value="Enviar" onclick="javascript:enviarComentario();"/></li>
-										</ul>
-									</div>
-								</div>
+								</form>
 							</section>
 						</div>
 					</div>
