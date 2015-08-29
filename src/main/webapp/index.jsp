@@ -1,4 +1,7 @@
-<!DOCTYPE HTML>
+<%@ include file="/WEB-INF/views/include.jsp" %>
+
+<%-- Redirected because we can't set the welcome page to a virtual URL. --%>
+<!-- c:redirect url="/hello.htm"/-->
 <!--
 	Arcana by HTML5 UP
 	html5up.net | @n33co
@@ -13,6 +16,9 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	
+		<!-- Scripts -->
+		<script type="text/javascript" src="scripts/main.js"></script>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -109,33 +115,31 @@
 							</section>
 							<section class="6u 12u(narrower)">
 								<h3>Contáctenos</h3>
-								<form>
-									<div class="row 50%">
-										<div class="6u 12u(mobilep)">
-											<input type="text" name="name" id="name" placeholder="Nombre" />
-										</div>
-										<div class="6u 12u(mobilep)">
-											<input type="email" name="email" id="email" placeholder="E-mail" />
-										</div>
+								<div class="row 50%">
+									<div class="6u 12u(mobilep)">
+										<input type="text" name="name" id="name" placeholder="Nombre" />
 									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<input type="text" name="motivo" id="motivo" placeholder="Motivo de Contacto" />
-										</div>
+									<div class="6u 12u(mobilep)">
+										<input type="email" name="email" id="email" placeholder="E-mail" />
 									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<textarea name="message" id="message" placeholder="Mensaje" rows="5"></textarea>
-										</div>
+								</div>
+								<div class="row 50%">
+									<div class="12u">
+										<input type="text" name="motivo" id="motivo" placeholder="Motivo de Contacto" />
 									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<ul class="actions">
-												<li><input type="submit" class="button alt" value="Enviar" /></li>
-											</ul>
-										</div>
+								</div>
+								<div class="row 50%">
+									<div class="12u">
+										<textarea name="message" id="message" placeholder="Mensaje" rows="5"></textarea>
 									</div>
-								</form>
+								</div>
+								<div class="row 50%">
+									<div class="12u">
+										<ul class="actions">
+											<li><input type="submit" class="button alt" value="Enviar" onclick="javascript:enviarComentario();"/></li>
+										</ul>
+									</div>
+								</div>
 							</section>
 						</div>
 					</div>
