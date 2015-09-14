@@ -33,8 +33,9 @@
 						<nav id="nav">
 							<ul>
 								<li class="current"><a href="index.html">Inicio</a></li>
-								<li><a href="login.html">Ingresar</a></li>
-								<li><a href="register.html">Registrarse</a></li>
+								<li><a href="login.htm">Ingresar</a></li>
+								<li><a href="register.htm">Registrarse</a></li>
+								<li><a href="#footer">Contáctenos</a></li>
 								<!-- 
 								<li>
 									<a href="#">Dropdown</a>
@@ -73,37 +74,8 @@
 					</header>
 				</section>
 
-			<!-- Highlights 
-				<section class="wrapper style1">
-					<div class="container">
-						<div class="row 200%">
-							<section class="4u 12u(narrower)">
-								<div class="box highlight">
-									<i class="icon major fa-paper-plane"></i>
-									<h3>This Is Important</h3>
-									<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-								</div>
-							</section>
-							<section class="4u 12u(narrower)">
-								<div class="box highlight">
-									<i class="icon major fa-pencil"></i>
-									<h3>Also Important</h3>
-									<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-								</div>
-							</section>
-							<section class="4u 12u(narrower)">
-								<div class="box highlight">
-									<i class="icon major fa-wrench"></i>
-									<h3>Probably Important</h3>
-									<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-								</div>
-							</section>
-						</div>
-					</div>
-				</section>
-			-->
 			<!-- Footer -->
-				<div id="footer">
+				<div id="footer" name="footer">
 					<div class="container">
 						<div class="row">
 							<section class="6u 12u(narrower) 24u$(mobilep)">

@@ -23,9 +23,7 @@ import com.caece.tmnintegral.repository.User;
 @Component
 public class UserManager {
 	
-	@Autowired
 	private RoleDao roleDao;
-	@Autowired
     private UserDao userDao;
 	
 	public UserManager(){
