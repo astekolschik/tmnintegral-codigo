@@ -35,19 +35,24 @@
 				<div class="container">
 						<section class="6u 12u(narrower)">
 							<h3>Información del Usuario</h3>
-							<form action="/TMNIntegralWeb/updateUser.htm">
+							<form action="/TMNIntegralWeb/updateUser.htm" onsubmit="return updateUserValidate()"
+								method="post">
 								<div class="row 100%">
+									<div class="12u 24u(mobilep)">
+										<c:out value="${model.message}" default=""/>
+									</div>
+									<input type="hidden" name="saveUser" id="saveUser"/>
 									<div class="6u 12u(mobilep)">
-										<input type="text" name="nombre" id="nombre" placeholder="Nombre" />
+										<input type="text" name="nombre" id="nombre" placeholder="Nombre" value="${model.userObj.name}"/>
 									</div>
 									<div class="6u 12u(mobilep)">
-										<input type="text" name="apellido" id="apellido" placeholder="Apellido" />
+										<input type="text" name="apellido" id="apellido" placeholder="Apellido" value="${model.userObj.lastName}"/>
 									</div>
 									<div class="6u 12u(mobilep)">
-										<input type="email" name="email" id="email" placeholder="E-mail" />
+										<input type="email" name="email" id="email" placeholder="E-mail" value="${model.userObj.email}"/>
 									</div>
 									<div class="6u 12u(mobilep)">
-										<input type="password" name="password" id="password" placeholder="Contraseña" />
+										<input type="password" name="password" id="password" placeholder="Nueva Contraseña" />
 									</div>
 									<div class="6u 12u(mobilep)">
 										<input type="password" name="password2" id="password2" placeholder="Verifique su Contraseña" />

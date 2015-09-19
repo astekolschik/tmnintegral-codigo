@@ -3,7 +3,6 @@ package com.tmnintegral.service;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,11 +96,27 @@ public class UserManager implements Serializable{
 	 * @param nombre
 	 * @param apellido
 	 * @param email
-	 * @param fNac
+	 * @param username
 	 * @param password
+	 * @return
 	 */
-	public void modificarUsuario(String nombre, String apellido, String email, Date fNac, String password){
-
+	public User modificarUsuario(String nombre, String apellido, String email, String username, String password){
+		User u = this.getUser(username);
+		if (u != null){
+			if (!u.getName().equals(nombre))
+				u.setName(nombre);
+			if (!u.getLastName().equals(apellido))
+				u.setLastName(apellido);
+			if (!u.getEmail().equals(email))
+				u.setEmail(email);
+			String encPwd = this.generarPassword(username, password);
+			if (!u.getPassword().equals(encPwd))
+				u.setPassword(encPwd);
+			
+			this.userDao.updateUser(u);
+		}
+		
+		return u;
 	}
 	
 	/**

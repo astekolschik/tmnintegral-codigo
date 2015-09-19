@@ -35,7 +35,8 @@
 				<div class="container">
 						<section class="6u 12u(narrower)">
 							<h3>Información del Usuario</h3>
-							<form action="/TMNIntegralWeb/register.htm">
+							<form action="/TMNIntegralWeb/register.htm" onsubmit="return createUserValidate()"
+								method="post">
 								<div class="row 100%">
 									<div class="6u 12u(mobilep)">
 										<input type="text" name="nombre" id="nombre" placeholder="Nombre" />
