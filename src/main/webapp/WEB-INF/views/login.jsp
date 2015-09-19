@@ -18,31 +18,25 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
 	</head>
-	<body>
+	<body onload="setMenuValue('login');">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<div id="header">
 
 					<!-- Logo -->
-						<h1><a href="index.html" id="logo">TMN <em>Integral</em></a></h1>
+					<h1><a href="index.htm" id="logo">TMN <em>Integral</em></a></h1>
 
 					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Inicio</a></li>
-								<li class="current"><a href="login.htm">Ingresar</a></li>
-								<li><a href="register.htm">Registrarse</a></li>
-								<li><a href="#footer">Contáctenos</a></li>
-							</ul>
-						</nav>
+					<%@ include file="/WEB-INF/views/menu.jsp" %>
 
 				</div>
 				
 				<div class="container">
 						<section class="6u 12u(narrower)">
 							<h3>Ingresar</h3>
-							<form action="/tmnintegral/login.htm">
+							<form action="/TMNIntegralWeb/login.htm" method="post">
+								<c:out value="${model.status}" default=""/>
 								<div class="row 50%">
 									<div class="6u 12u(mobilep)">
 										<input type="text" name="usuario" id="usuario" placeholder="Usuario" />
@@ -51,9 +45,12 @@
 									</div>
 								</div>
 								<div class="row 50%">
+									<a href="/TMNIntegralWeb/olvidePass.htm">Olvide mi contraseña</a>
+								</div>
+								<div class="row 50%">
 									<div class="12u">
 										<ul class="actions">
-											<li><input type="submit" class="button alt" value="Login" /></li>
+											<li><input type="submit" class="button alt" value="Login"/></li>
 										</ul>
 									</div>
 								</div>
@@ -64,35 +61,7 @@
 			
 
 			<!-- Footer -->
-				<div id="footer" name="footer">
-					<div class="container">
-					<!-- Icons -->
-						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-						</ul>
-
-					<!-- Copyright -->
-						<div class="copyright">
-							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-
-				</div>
-
+			<%@ include file="/WEB-INF/views/footer.jsp" %>
 		</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
 	</body>
 </html>
