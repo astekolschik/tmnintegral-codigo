@@ -119,7 +119,7 @@ public class JPAUserDao implements UserDao {
     @Transactional(readOnly = false)
     @SuppressWarnings("unchecked")
 	public void deleteUser(String username) {
-    	em.createQuery("delete from User u where u.user_name=" + username).executeUpdate();
+    	em.createQuery("delete from User u where u.user_name='" + username + "'").executeUpdate();
 	}
 
 }

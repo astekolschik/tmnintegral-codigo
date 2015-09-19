@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tmnintegral.domain.User;
 import com.tmnintegral.service.UserManager;
 
 /**
@@ -48,8 +49,9 @@ public class LoginController {
 			String password = request.getParameter("password");
 			
 	        try {
-				if (um.autenticarUsuario(user, password)){
-					session.setAttribute("user", user);
+	        	User u = um.autenticarUsuario(user, password);
+				if (u != null){
+					session.setAttribute("user", u);
 					return new ModelAndView("index", "model", myModel);
 				}else{
 					myModel.put("status", "Error en el usuario/contraseña. Intente nuevamente.");

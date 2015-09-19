@@ -18,7 +18,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
 	</head>
-	<body onload="setMenuValue('update');">
+	<body onload="setMenuValue('usuario');">
 		<div id="page-wrapper">
 
 			<!-- Header -->

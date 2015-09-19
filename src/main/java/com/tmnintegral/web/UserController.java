@@ -5,6 +5,7 @@ package com.tmnintegral.web;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -66,10 +67,10 @@ public class UserController {
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		
 		if (request.getParameter("saveUser") == null){
-			User userobj = this.um.getUser((String)(session.getAttribute("user")));
+			User userobj = (User)(session.getAttribute("user"));
 			myModel.put("userObj", userobj);
 		}else{
-			String username = ((String)(session.getAttribute("user")));
+			String username = ((User)(session.getAttribute("user"))).getUser_name();
 			String nombre = request.getParameter("nombre");
 			String apellido = request.getParameter("apellido");
 			String email = request.getParameter("email");
@@ -80,6 +81,27 @@ public class UserController {
 			myModel.put("message", "Los datos se actualizaron con éxito");
 		}
 		return new ModelAndView("user/updateUser", "model", myModel);
+    }
+	
+	@RequestMapping(value="/deleteUser.htm")
+    public ModelAndView deleteUsers(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+            throws ServletException, IOException {
+
+		Map<String, Object> myModel = new HashMap<String, Object>();
+		
+		if (request.getParameter("deleteUserList") == null){
+			List<User> userList = this.um.getUserList();
+			myModel.put("userList", userList);
+		}else{
+			String userList = request.getParameter("deleteUserList");
+			String[] usersToDel = userList.split(",");
+			for (int i=0; i<usersToDel.length; i++){
+				this.um.eliminarUsuario(usersToDel[i]);
+			}
+			List<User> newUserList = this.um.getUserList();
+			myModel.put("userList", newUserList);
+		}
+		return new ModelAndView("user/deleteUser", "model", myModel);
     }
 
 	

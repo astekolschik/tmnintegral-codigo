@@ -27,3 +27,15 @@ function validatePassword(){
 		}
 	}
 }
+
+function eliminarUsuarios(){
+	var delList = [];
+	$("input:checkbox[name=userCheck]:checked").each(function(){
+	    delList.push($(this).val());
+	});
+	if(delList.length == 0){
+		alert('Debe seleccionar al menos un usuario.');
+	}else{
+		 window.location.replace("/TMNIntegralWeb/deleteUser.htm?deleteUserList=" + delList);
+	}
+}

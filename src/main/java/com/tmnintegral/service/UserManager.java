@@ -3,6 +3,7 @@ package com.tmnintegral.service;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +35,14 @@ public class UserManager implements Serializable{
 	 * @param password
 	 * @throws Exception 
 	 */
-	public boolean autenticarUsuario(String username, String password) throws Exception{
+	public User autenticarUsuario(String username, String password) throws Exception{
 		User u = userDao.getUser(username);
 		if (u != null){
 			String loginPwd = this.generarPassword(username, password);
 			if (loginPwd.equals(u.getPassword()))
-				return true;
+				return u;
 			else
-				return false;
+				return null;
 		}else{
 			throw new Exception("Usuario inexistente");
 		}
@@ -83,7 +84,7 @@ public class UserManager implements Serializable{
 	 * @param userId
 	 */
 	public void eliminarUsuario(String userId){
-
+		this.userDao.deleteUser(userId);
 	}
 
 	public User getUser(String userId){
@@ -142,21 +143,13 @@ public class UserManager implements Serializable{
 	}
 
 	/**
-	 * 
-	 * @param newVal
+	 * Obtiene la lista de todos los usuarios
+	 * @return lista de usuarios
 	 */
-	public void setUser(User newVal){
-
+	public List<User> getUserList(){
+		return this.userDao.getUsersList();
 	}
-
-	/**
-	 * 
-	 * @param userId
-	 */
-	public boolean usuarioDuplicado(String userId){
-		return true;
-	}
-
+	
 	/**
 	 * Chequea la existencia de un username repetido
 	 * @param username
