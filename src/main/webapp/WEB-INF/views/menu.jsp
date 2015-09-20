@@ -9,11 +9,17 @@
 			<li id="menu-usuario">
 				<a href="#">Usuario</a>
 				<ul>
-					<li id="menu-update"><a href="updateUser.htm">Modificar usuario</a></li>
+					<li><a href="updateUser.htm">Modificar usuario</a></li>
 					<c:if test="${user.role_id == 1}">
-						<li id="menu-update"><a href="deleteUser.htm">Eliminar Usuarios</a></li>
+						<li><a href="deleteUser.htm">Eliminar Usuarios</a></li>
 					</c:if>
-					<li id="menu-update"><a href="logout.htm">Cerrar Sesión</a></li>
+					<li><a href="logout.htm">Cerrar Sesión</a></li>
+				</ul>
+			</li>
+			<li id="menu-inventory">
+				<a href="#">Inventario</a>
+				<ul>
+					<li><a href="listTipoEquipos.htm">Tipos de Equipo</a></li>
 				</ul>
 			</li>
 		</c:if>

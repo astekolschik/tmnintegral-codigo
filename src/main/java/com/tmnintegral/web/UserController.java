@@ -24,7 +24,7 @@ import com.tmnintegral.domain.User;
 import com.tmnintegral.service.UserManager;
 
 /**
- * @author Usuario
+ * @author Agustina
  *
  */
 @Controller
