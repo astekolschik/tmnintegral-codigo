@@ -4,7 +4,6 @@
 package com.tmnintegral.service;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,12 +45,12 @@ public class UserManagerTests {
 
     @Test
     public void testAutenticarUser() {
-    	boolean u = false;
+    	User u = null;
 		try {
 			u = this.userManager.autenticarUsuario("agussteko", "123456");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-    	assertTrue(u);
+    	assertNotNull(u);
     }
 }
