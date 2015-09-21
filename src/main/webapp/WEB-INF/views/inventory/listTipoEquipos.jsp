@@ -38,27 +38,29 @@
 							<table class="default">
 								<thead>
 									<tr>
-										<td>#</td>
 										<td>Id</td>
 										<td>Comando default</td>
 										<td>SNMP Version default</td>
 										<td>Driver</td>
 										<td>Tecnología</td>
 										<td>Vendor</td>
+										<td>Ver</td>
+										<td>Modificar</td>
+										<td>Eliminar</td>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${model.tipoEquipoList}" var="te">
 										<tr>
-											<td>
-												<input type="checkbox" name="userCheck" value="${te.id}"/>
-											</td>
 											<td>${te.id}</td>
 											<td>${te.default_comm_read}</td>
 											<td>${te.default_snmp_version}</td>
 											<td>${te.driver}</td>
 											<td>${te.technology}</td>
 											<td>${te.vendor}</td>
+											<td><input type="image" src="images/view.png" onclick="displayTipoEquipo(${te.id}, false)"></td>
+											<td><input type="image" src="images/update.png" onclick="displayTipoEquipo(${te.id}, true)"></td>
+											<td><input type="image" src="images/delete.png" onclick="deleteTipoEquipo(${te.id})"></td>
 										</tr>
 									</c:forEach>
 								</tbody>

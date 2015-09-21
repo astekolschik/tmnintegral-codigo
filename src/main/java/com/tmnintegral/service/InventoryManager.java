@@ -32,5 +32,14 @@ public class InventoryManager implements Serializable{
 		return this.tipoEquipoDao.getTipoEquiposList();
 	}
 	
+	/**
+	 * Devuelve el equipo seleccionado en el id
+	 * @param tipoEquipo
+	 * @return
+	 */
+	public TipoEquipo getTipoDeEquipoById(int tipoEquipo){
+		return this.tipoEquipoDao.getTipoEquipo(tipoEquipo);
+	}
+	
 	
 }

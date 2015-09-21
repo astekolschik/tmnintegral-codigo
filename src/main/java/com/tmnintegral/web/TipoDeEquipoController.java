@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tmnintegral.domain.TipoEquipo;
 import com.tmnintegral.service.InventoryManager;
 
 /**
@@ -41,5 +42,25 @@ public class TipoDeEquipoController {
 		
 		return new ModelAndView("inventory/listTipoEquipos", "model", myModel);
     }
+	
+	@RequestMapping(value="/displayTipoEquipo.htm")
+    public ModelAndView mostrarEquipo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+		Map<String, Object> myModel = new HashMap<String, Object>();
+		TipoEquipo te = im.getTipoDeEquipoById(
+				Integer.parseInt((String)request.getParameter("teId")));
+		myModel.put("tipoEquipoObj", te);
+		if (((String)request.getParameter("edit")).equals("true")){
+			myModel.put("edit", true);
+			myModel.put("displayEdit", "");
+		}else{
+			myModel.put("edit", false);
+			myModel.put("displayEdit", "none");
+		}
+		
+		return new ModelAndView("inventory/displayTipoEquipo", "model", myModel);
+    }
+	
 
 }
