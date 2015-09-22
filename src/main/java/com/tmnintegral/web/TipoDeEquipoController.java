@@ -44,7 +44,7 @@ public class TipoDeEquipoController {
     }
 	
 	@RequestMapping(value="/displayTipoEquipo.htm")
-    public ModelAndView mostrarEquipo(HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView mostrarTipoEquipo(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
 		Map<String, Object> myModel = new HashMap<String, Object>();
@@ -62,5 +62,45 @@ public class TipoDeEquipoController {
 		return new ModelAndView("inventory/displayTipoEquipo", "model", myModel);
     }
 	
-
+	@RequestMapping(value="/nuevoTipoEquipo.htm")
+	public ModelAndView nuevoTipoEquipo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+		
+		Map<String, Object> myModel = new HashMap<String, Object>();
+		TipoEquipo te = new TipoEquipo();
+		myModel.put("tipoEquipoObj", te);
+		myModel.put("edit", true);
+		myModel.put("displayEdit", "");
+		return new ModelAndView("inventory/displayTipoEquipo", "model", myModel);
+	}
+	
+	@RequestMapping(value="/updateTipoEquipo.htm")
+	public ModelAndView actualizarTipoEquipo(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+		
+		String idEquipo = request.getParameter("idequipo");
+		String defaultComm = request.getParameter("defaultComm");
+		String defaultSNMP = request.getParameter("defaultSNMP");
+		String driver= request.getParameter("driver");
+		String technology = request.getParameter("technology");
+		String vendor = request.getParameter("vendor");
+		
+		if (idEquipo != null)
+			this.im.modificarTipoEquipo(Integer.valueOf(idEquipo), defaultComm, defaultSNMP, driver, technology, vendor);
+		else
+			this.im.crearTipoEquipo(defaultComm, defaultSNMP, driver, technology, vendor);
+		
+		return this.listarEquipos(request, response);
+	}
+	
+	@RequestMapping(value="/deleteTipoEquipo.htm")
+	public ModelAndView borrarTipoEquipo(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+		
+		String idEquipo = request.getParameter("teId");
+		
+		this.im.borrarTipoEquipo(Integer.valueOf(idEquipo));
+		
+		return this.listarEquipos(request, response);
+	}
 }

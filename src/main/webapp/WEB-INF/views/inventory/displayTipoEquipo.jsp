@@ -18,7 +18,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
 	</head>
-	<body onload="setMenuValue('inventory');">
+	<body onload="setMenuValue('inventory'); setEnableFields(${model.edit})">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -37,50 +37,50 @@
 							<h3>Tipo de equipo</h3>
 							<form action="/TMNIntegralWeb/updateTipoEquipo.htm" method="post">
 								<div class="row 100%">
-									<div class="4u 8u(mobilep)">
-										<label>Id de equipo</label>
-									</div>
-									<div class="8u 16u(mobilep)">
-										<input type="text" id="idequipo" value="${model.tipoEquipoObj.id}" placeholder="Id equipo" disabled="${model.edit}"/>
-									</div>
+									<c:if test="${model.tipoEquipoObj.id != 0}">
+										<div class="4u 8u(mobilep)">
+											<label>Id de equipo</label>
+										</div>
+										<div class="8u 16u(mobilep)">
+											<input type="text" id="idequipo" name="idequipo" value="${model.tipoEquipoObj.id}" placeholder="Id equipo" />
+										</div>
+									</c:if>
 									<div class="4u 8u(mobilep)">
 										<label>Comando Default</label>
 									</div>
 									<div class="8u 16u(mobilep)">
-										<input type="text" id="defaultComm" value="${model.tipoEquipoObj.default_comm_read}" placeholder="Comando Default" disabled="${model.edit}"/>
+										<input type="text" id="defaultComm" name="defaultComm" value="${model.tipoEquipoObj.default_comm_read}" placeholder="Comando Default" />
 									</div>
 									<div class="4u 8u(mobilep)">
 										<label>SNMP Default</label>
 									</div>
 									<div class="8u 16u(mobilep)">
-										<input type="text" id="defaultSNMP" value="${model.tipoEquipoObj.default_snmp_version}" placeholder="SNMP Default" disabled="${model.edit}"/>
+										<input type="text" id="defaultSNMP" name="defaultSNMP" value="${model.tipoEquipoObj.default_snmp_version}" placeholder="SNMP Default" />
 									</div>
 									<div class="4u 8u(mobilep)">
 										<label>Driver</label>
 									</div>
 									<div class="8u 16u(mobilep)">
-										<input type="text" id="driver" value="${model.tipoEquipoObj.driver}" placeholder="Driver" disabled="${model.edit}"/>
+										<input type="text" id="driver" name="driver" value="${model.tipoEquipoObj.driver}" placeholder="Driver" />
 									</div>
 									<div class="4u 8u(mobilep)">
 										<label>Tecnologia</label>
 									</div>
 									<div class="8u 16u(mobilep)">
-										<input type="text" id="technology" value="${model.tipoEquipoObj.technology}" placeholder="Tecnologia" disabled="${model.edit}"/>
+										<input type="text" id="technology" name="technology" value="${model.tipoEquipoObj.technology}" placeholder="Tecnologia" />
 									</div>
 									<div class="4u 8u(mobilep)">
 										<label>Marca</label>
 									</div>
 									<div class="8u 16u(mobilep)">
-										<input type="text" id="vendor" value="${model.tipoEquipoObj.vendor}" placeholder="Vendor" disabled="${model.edit}"/>
+										<input type="text" id="vendor" name="vendor" value="${model.tipoEquipoObj.vendor}" placeholder="Vendor" />
 									</div>
 								</div>
 								<div class="row 100%">
 									<div class="12u">
-										<ul class="actions" style="display: ${model.displayEdit}">
-											<li><input type="submit" class="button alt" value="Modificar" /></li>
-										</ul>
 										<ul class="actions">
-											<li><input type="button" class="button alt" value="Volver" /></li>
+											<li style="display: ${model.displayEdit}"><input type="submit" class="button alt" value="Modificar" /></li>
+											<li><input type="button" class="button alt" value="Volver" onclick="displayLisTipoEquipo();" /></li>
 										</ul>
 									</div>
 								</div>

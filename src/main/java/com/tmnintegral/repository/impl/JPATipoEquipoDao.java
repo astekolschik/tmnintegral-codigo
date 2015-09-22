@@ -62,8 +62,11 @@ public class JPATipoEquipoDao implements TipoEquipoDao {
 	 */
     @Transactional(readOnly = false)
     @SuppressWarnings("unchecked")
-	public void saveTipoEquipo(TipoEquipo te) throws Exception {
-		em.merge(te);
+	public TipoEquipo saveTipoEquipo(TipoEquipo te) throws Exception {
+    	int teId = (Integer)em.createQuery("select max(id) + 1 from TipoEquipo").getSingleResult();
+    	te.setId(teId);
+    	em.merge(te);
+    	return te;
 	}
 
 	/* (non-Javadoc)

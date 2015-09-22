@@ -17,7 +17,7 @@ public interface TipoEquipoDao {
 	
 	public List<TipoEquipo> getTipoEquiposList();
 	
-	public void saveTipoEquipo(TipoEquipo te) throws Exception;
+	public TipoEquipo saveTipoEquipo(TipoEquipo te) throws Exception;
 	
 	public void updateTipoEquipo(TipoEquipo te);
 	

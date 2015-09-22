@@ -65,6 +65,11 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							<div class="row 100%">
+								<ul class="actions">
+									<li><input type="button" class="button alt" value="Nuevo" onclick="nuevoTipoEquipo();" /></li>
+								</ul>
+							</div>
 						</section>
 					</div>
 				</div>

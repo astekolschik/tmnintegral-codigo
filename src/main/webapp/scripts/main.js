@@ -39,3 +39,28 @@ function eliminarUsuarios(){
 		 window.location.replace("/TMNIntegralWeb/deleteUser.htm?deleteUserList=" + delList);
 	}
 }
+
+function displayTipoEquipo(teId, isEdition){
+	window.location.replace("/TMNIntegralWeb/displayTipoEquipo.htm?teId=" + teId + "&edit=" + isEdition);
+}
+
+function nuevoTipoEquipo(){
+	window.location.replace("/TMNIntegralWeb/nuevoTipoEquipo.htm");
+}
+
+function displayLisTipoEquipo(){
+	window.location.replace("/TMNIntegralWeb/listTipoEquipos.htm");
+}
+
+function deleteTipoEquipo(idTipoEquipo){
+	window.location.replace("/TMNIntegralWeb/deleteTipoEquipo.htm?teId=" + idTipoEquipo);
+}
+
+function setEnableFields(isEnabled){
+	$('#idequipo').prop( "disabled", !isEnabled );
+	$('#defaultComm').prop( "disabled", !isEnabled );
+	$('#defaultSNMP').prop( "disabled", !isEnabled );
+	$('#driver').prop( "disabled", !isEnabled );
+	$('#technology').prop( "disabled", !isEnabled );
+	$('#vendor').prop( "disabled", !isEnabled );
+}
