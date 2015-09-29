@@ -104,3 +104,10 @@ function paginateTable(tableId){
     	}
     });
 }
+
+function selectAllCheckbox(chk){
+	var val = chk.checked;
+	$('input[type=checkbox]').each(function () {
+		this.checked = val;
+	  });
+}

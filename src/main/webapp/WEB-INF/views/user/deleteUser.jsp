@@ -69,7 +69,9 @@
 							<table id="usersTable" class="default">
 								<thead>
 									<tr>
-										<td>#</td>
+										<td>
+											<input type="checkbox" name="userCheck" value="all" onclick="selectAllCheckbox(this);"/>
+										</td>
 										<td>Nombre de usuario</td>
 										<td>Nombre</td>
 										<td>Apellido</td>
