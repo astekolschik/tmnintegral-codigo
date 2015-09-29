@@ -39,13 +39,10 @@
 								<c:out value="${model.status}" default=""/>
 								<div class="row 50%">
 									<div class="6u 12u(mobilep)">
-										<input type="text" name="usuario" id="usuario" placeholder="Usuario" />
+										<input type="text" name="usuario" id="usuario" placeholder="Usuario" required="required" />
 										<br>
-										<input type="password" name="password" id="password" placeholder="Contraseña" />
+										<input type="password" name="password" id="password" placeholder="Contraseña" required="required"/>
 									</div>
-								</div>
-								<div class="row 50%">
-									<a href="/TMNIntegralWeb/olvidePass.htm">Olvide mi contraseña</a>
 								</div>
 								<div class="row 50%">
 									<div class="12u">
@@ -53,6 +50,9 @@
 											<li><input type="submit" class="button alt" value="Login"/></li>
 										</ul>
 									</div>
+								</div>
+								<div class="row 50%">
+									<a href="/TMNIntegralWeb/olvidePass.htm">Olvide mi contraseña</a>
 								</div>
 							</form>
 						</section>

@@ -39,22 +39,22 @@
 								method="post">
 								<div class="row 100%">
 									<div class="6u 12u(mobilep)">
-										<input type="text" name="nombre" id="nombre" placeholder="Nombre" />
+										<input type="text" name="nombre" id="nombre" placeholder="Nombre" required="required"/>
 									</div>
 									<div class="6u 12u(mobilep)">
-										<input type="text" name="apellido" id="apellido" placeholder="Apellido" />
+										<input type="text" name="apellido" id="apellido" placeholder="Apellido" required="required"/>
 									</div>
 									<div class="6u 12u(mobilep)">
-										<input type="email" name="email" id="email" placeholder="E-mail" />
+										<input type="email" name="email" id="email" placeholder="E-mail" required="required"/>
 									</div>
 									<div class="6u 12u(mobilep)">
-										<input type="text" name="usuario" id="usuario" placeholder="Nombre de Usuario" />
+										<input type="text" name="usuario" id="usuario" placeholder="Nombre de Usuario" required="required"/>
 									</div>
 									<div class="6u 12u(mobilep)">
-										<input type="password" name="password" id="password" placeholder="Contraseña" />
+										<input type="password" name="password" id="password" placeholder="Contraseña" required="required"/>
 									</div>
 									<div class="6u 12u(mobilep)">
-										<input type="password" name="password2" id="password2" placeholder="Verifique su Contraseña" />
+										<input type="password" name="password2" id="password2" placeholder="Verifique su Contraseña" required="required"/>
 									</div>
 								</div>
 								<div class="row 50%">

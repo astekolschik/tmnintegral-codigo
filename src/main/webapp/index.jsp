@@ -31,8 +31,8 @@
 						<%@ include file="/WEB-INF/views/menu.jsp" %>
 
 				</div>
-
-			<!-- Banner -->
+			<c:if test="${empty user}">
+				<!-- Banner -->
 				<section id="banner">
 					<header>
 						<h2>TMN Integral: <em>Solución para la gestión de redes</em></h2>
@@ -83,11 +83,16 @@
 							</section>
 						</div>
 					</div>
-
-					<%@ include file="/WEB-INF/views/footer.jsp" %>
-
 				</div>
-
+			</c:if>
+			<c:if test="${not empty user}">
+			<div>
+				<section class="12u 24u(narrower)" style="margin-left: 70px">
+					<h3>Bienvenido/a de vuelta, <c:out value="${user.name}"></c:out></h3>
+				</section>
+			</div>
+			</c:if>
+			<%@ include file="/WEB-INF/views/footer.jsp" %>
 		</div>
 	</body>
 </html>
