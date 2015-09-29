@@ -79,7 +79,9 @@
 								<div class="row 100%">
 									<div class="12u">
 										<ul class="actions">
-											<li style="display: ${model.displayEdit}"><input type="submit" class="button alt" value="Modificar" /></li>
+											<li style="display: ${model.displayEdit}">
+												<input type="submit" class="button alt" value="Guardar" />
+											</li>
 											<li><input type="button" class="button alt" value="Volver" onclick="displayLisTipoEquipo();" /></li>
 										</ul>
 									</div>
