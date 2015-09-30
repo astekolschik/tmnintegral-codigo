@@ -35,7 +35,7 @@
 				<div class="container">
 						<section class="8u 16u(narrower)">
 							<h3>Comando</h3>
-							<form action="/TMNIntegralWeb/updateComando.htm" method="post">
+							<form action="/TMNIntegralWeb/updateComando.htm" method="post" onsubmit="setdtValues();">
 								<div class="row 100%">
 									<c:if test="${not empty model.commandObj.id_command}">
 										<div class="4u 8u(mobilep)">
@@ -67,6 +67,7 @@
 										<label>Tipos de equipo asociados</label>
 									</div>
 									<div class="8u 16u(mobilep)">
+										<input type="hidden" name="dtValues" id="dtValues"/>
 										<select id="dt-select"
 												multiple="multiple" 
 												style="width: 250px;">

@@ -88,10 +88,14 @@ public class CommandController {
 		String comando = request.getParameter("defaultComm");
 		String tipoComando = request.getParameter("tipocomando");
 		
+		String[] dtValues = null;
+		if (request.getParameter("dtValues") != null)
+			dtValues = request.getParameter("dtValues").split(",");
+		
 		if (idComando != null)
-			this.cm.modificarComando(Integer.parseInt(idComando), comando, tipoComando);
+			this.cm.modificarComando(Integer.parseInt(idComando), comando, tipoComando, dtValues);
 		else
-			this.cm.crearComando(nombrecomando, comando, tipoComando);
+			this.cm.crearComando(nombrecomando, comando, tipoComando, dtValues);
 		
 		return this.listarComandos(request, response);
 	}

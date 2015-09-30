@@ -132,3 +132,7 @@ function setTipoEquiposSelectValues(dts){
 	    $("#dt-select option[value='" + e + "']").prop("selected", true);
 	});
 }
+
+function setdtValues(){
+    $("#dtValues").val($("#dt-select").val());
+}
