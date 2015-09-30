@@ -22,6 +22,12 @@
 					<li><a href="listTipoEquipos.htm">Tipos de Equipo</a></li>
 				</ul>
 			</li>
+			<li id="menu-configuracion">
+				<a href="#">Configuración</a>
+				<ul>
+					<li><a href="listComandos.htm">Comandos</a></li>
+				</ul>
+			</li>
 			<li><a href="logout.htm">Cerrar Sesión</a></li>
 		</c:if>
 	</ul>

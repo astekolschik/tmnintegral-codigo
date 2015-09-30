@@ -4,10 +4,12 @@
 package com.tmnintegral.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +31,9 @@ public class TipoEquipo implements Serializable{
 	private String driver; 
 	private String technology;
 	private String vendor;
+	
+	@ManyToMany(mappedBy="deviceTypes")
+	private Set<Command> commands;
 	
 	public TipoEquipo(){
 		super();
@@ -115,6 +120,20 @@ public class TipoEquipo implements Serializable{
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the commands
+	 */
+	public Set<Command> getCommands() {
+		return commands;
+	}
+
+	/**
+	 * @param commands the commands to set
+	 */
+	public void setCommands(Set<Command> commands) {
+		this.commands = commands;
 	}
 	
 }
