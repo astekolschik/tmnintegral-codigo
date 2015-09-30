@@ -46,6 +46,12 @@
 										</div>
 									</c:if>
 									<div class="4u 8u(mobilep)">
+										<label>Descripción</label>
+									</div>
+									<div class="8u 16u(mobilep)">
+										<input type="text" id="descripcion" name="descripcion" value="${model.tipoEquipoObj.description}" placeholder="Descripción" />
+									</div>
+									<div class="4u 8u(mobilep)">
 										<label>Comando Default</label>
 									</div>
 									<div class="8u 16u(mobilep)">

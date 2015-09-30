@@ -18,7 +18,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
 	</head>
-	<body onload="setMenuValue('configuracion'); setEnableFields(${model.edit})">
+	<body onload="setMenuValue('configuracion'); setEnableFields(${model.edit}); setTipoEquiposSelectValues(${model.commandObj.deviceTypesIds})">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -37,7 +37,7 @@
 							<h3>Comando</h3>
 							<form action="/TMNIntegralWeb/updateComando.htm" method="post">
 								<div class="row 100%">
-									<c:if test="${model.commandObj.id_command}">
+									<c:if test="${not empty model.commandObj.id_command}">
 										<div class="4u 8u(mobilep)">
 											<label>Id Comando</label>
 										</div>
@@ -45,6 +45,12 @@
 											<input type="text" id="idCommand" name="idCommand" value="${model.commandObj.id_command}" placeholder="Id Comando" />
 										</div>
 									</c:if>
+									<div class="4u 8u(mobilep)">
+										<label>Nombre</label>
+									</div>
+									<div class="8u 16u(mobilep)">
+										<input type="text" id="nameComm" name="nameComm" value="${model.commandObj.command_name}" placeholder="Nombre" />
+									</div>
 									<div class="4u 8u(mobilep)">
 										<label>Comando</label>
 									</div>
@@ -56,6 +62,18 @@
 									</div>
 									<div class="8u 16u(mobilep)">
 										<input type="text" id="tipocomando" name="tipocomando" value="${model.commandObj.command_type}" placeholder="Tipo de Comando" />
+									</div>
+									<div class="4u 8u(mobilep)">
+										<label>Tipos de equipo asociados</label>
+									</div>
+									<div class="8u 16u(mobilep)">
+										<select id="dt-select"
+												multiple="multiple" 
+												style="width: 250px;">
+											<c:forEach items="${model.deviceTypes}" var="dt">
+												<option value="${dt.id}"><c:out value="${dt.description}"/> </option>
+											</c:forEach>
+										</select>
 									</div>
 								</div>
 								<div class="row 100%">

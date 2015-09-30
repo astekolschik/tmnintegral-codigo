@@ -39,7 +39,7 @@ public class JPACommandDaoTest {
     
     @Test
     public void testSaveNewCommand() {
-        Command te = new Command(999, "test", "test");
+        Command te = new Command(999, "test", "test", "test");
         try {
 			te = commandDao.saveCommand(te);
 

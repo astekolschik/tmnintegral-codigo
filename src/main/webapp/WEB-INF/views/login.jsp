@@ -47,7 +47,7 @@
 								<div class="row 50%">
 									<div class="12u">
 										<ul class="actions">
-											<li><input type="submit" class="button alt" value="Login"/></li>
+											<li><input type="submit" class="button alt" value="Ingresar"/></li>
 										</ul>
 									</div>
 								</div>

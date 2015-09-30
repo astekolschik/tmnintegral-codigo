@@ -4,10 +4,14 @@
 package com.tmnintegral.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -28,10 +32,11 @@ public class Command implements Serializable{
     @Column(name = "id_command")
 	private Integer id_command;
 	
+	private String command_name;
 	private String command;
 	private String command_type;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="command_devicetype",
     		joinColumns={@JoinColumn(name="id_command", referencedColumnName="id_command")},
     	    inverseJoinColumns={@JoinColumn(name="id_device_type", referencedColumnName="id")})
@@ -41,9 +46,10 @@ public class Command implements Serializable{
 		super();
 	}
 	
-	public Command(Integer id, String command, String command_type) {
+	public Command(Integer id, String name, String command, String command_type) {
 		super();
 		this.id_command = id;
+		this.command_name = name;
 		this.command = command;
 		this.command_type = command_type;
 	}
@@ -99,6 +105,29 @@ public class Command implements Serializable{
 	 */
 	public void setId_command(Integer id_command) {
 		this.id_command = id_command;
+	}
+
+	/**
+	 * @return the command_name
+	 */
+	public String getCommand_name() {
+		return command_name;
+	}
+
+	/**
+	 * @param command_name the command_name to set
+	 */
+	public void setCommand_name(String command_name) {
+		this.command_name = command_name;
+	}
+	
+	public List<String> getDeviceTypesIds(){
+		List<String> strR = new ArrayList<String>();
+		Iterator<TipoEquipo> it = this.getDeviceTypes().iterator();
+		while (it.hasNext()){
+			strR.add(String.valueOf(it.next().getId()));
+		}
+		return strR;
 	}
 	
 }

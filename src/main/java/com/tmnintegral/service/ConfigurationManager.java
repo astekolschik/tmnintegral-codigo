@@ -66,8 +66,14 @@ public class ConfigurationManager implements Serializable{
 		}
 	}
 
-	public void crearComando(String comando, String tipoComando) {
-		Command c = new Command(null, comando, tipoComando);
+	/**
+	 * Crea un nuevo comando
+	 * @param nombreComando
+	 * @param comando
+	 * @param tipoComando
+	 */
+	public void crearComando(String nombreComando, String comando, String tipoComando) {
+		Command c = new Command(null, nombreComando, comando, tipoComando);
 		try {
 			this.commandDao.saveCommand(c);
 		} catch (Exception e) {
@@ -75,6 +81,10 @@ public class ConfigurationManager implements Serializable{
 		}
 	}
 
+	/**
+	 * Elimina el comando seleccionado
+	 * @param cId
+	 */
 	public void borrarComando(Integer cId) {
 		this.commandDao.deleteCommand(cId);
 	}

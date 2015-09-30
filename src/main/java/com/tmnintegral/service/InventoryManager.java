@@ -52,11 +52,13 @@ public class InventoryManager implements Serializable{
 	 * @return
 	 */
 	public TipoEquipo modificarTipoEquipo(
-			int id, String defaultComm, String defaultSNMP,
+			int id, String description, String defaultComm, String defaultSNMP,
 			String driver, String technology, String vendor){
 		
 		TipoEquipo te = this.getTipoDeEquipoById(id);
 		if(te != null){
+			if (!te.getDescription().equals(description))
+				te.setDescription(description);
 			if (!te.getDefault_comm_read().equals(defaultComm))
 				te.setDefault_comm_read(defaultComm);
 			if (!te.getDefault_snmp_version().equals(defaultSNMP))
@@ -74,10 +76,11 @@ public class InventoryManager implements Serializable{
 		return te;
 	}
 	
-	public TipoEquipo crearTipoEquipo(String defaultComm, String defaultSNMP,
+	public TipoEquipo crearTipoEquipo(String description, String defaultComm, String defaultSNMP,
 			String driver, String technology, String vendor){
 		
 		TipoEquipo te = new TipoEquipo();
+		te.setDescription(description);
 		te.setDefault_comm_read(defaultComm);
 		te.setDefault_snmp_version(defaultSNMP);
 		te.setDriver(driver);

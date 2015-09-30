@@ -26,6 +26,7 @@
 				<a href="#">Configuración</a>
 				<ul>
 					<li><a href="listComandos.htm">Comandos</a></li>
+					<li><a href="restoreConfiguration.htm">Restaurar</a></li>
 				</ul>
 			</li>
 			<li><a href="logout.htm">Cerrar Sesión</a></li>

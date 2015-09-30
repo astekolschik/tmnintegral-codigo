@@ -18,7 +18,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
 	</head>
-	<body onload="setMenuValue('configuracion');paginateTable('comandosTable')">
+	<body onload="setMenuValue('configuracion');">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -34,36 +34,34 @@
 				
 				<div class="container">
 						<section class="12u 24u(narrower)">
-							<h3>Administración de Comandos</h3>
-							<table id="comandosTable" class="default">
-								<thead>
-									<tr>
-										<td>Id</td>
-										<td>Nombre</td>
-										<td>Comando</td>
-										<td>Tipo de Comando</td>
-										<td>Ver</td>
-										<td>Modificar</td>
-										<td>Eliminar</td>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${model.commandList}" var="c">
-										<tr>
-											<td>${c.id_command}</td>
-											<td>${c.command_name}</td>
-											<td>${c.command}</td>
-											<td>${c.command_type}</td>
-											<td><input type="image" src="images/view.png" onclick="displayComando(${c.id_command}, false)" style="width: 20px;height: 20px;"></td>
-											<td><input type="image" src="images/update.png" onclick="displayComando(${c.id_command}, true)" style="width: 20px;height: 20px;"></td>
-											<td><input type="image" src="images/delete.png" onclick="deleteComando(${c.id_command})" style="width: 20px;height: 20px;"></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+							<h3>Restaurar Configuración</h3>
+							<div class="row 100%">
+								<div class="4u 8u(mobilep)">
+									<label>Comando</label>
+								</div>
+								<div class="8u 16u(mobilep)">
+									<select id="select-comando" style="width: 120px;">
+										<c:forEach items="${model.commands}" var="c">
+											<option value="${c.id_command}"><c:out value="${c.command_name}"></c:out></option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							<div class="row 100%">
+								<div class="4u 8u(mobilep)">
+									<label>Dispositivo</label>
+								</div>
+								<div class="8u 16u(mobilep)">
+									<!-- select id="select-dispositivo">
+										<c:forEach items="${model.devices}" var="d">
+											<option value="${c.id_command}"><c:out value="${c.command}"></c:out></option>
+										</c:forEach>
+									</select-->
+								</div>
+							</div>
 							<div class="row 100%">
 								<ul class="actions">
-									<li><input type="button" class="button alt" value="Nuevo" onclick="nuevoComando();" /></li>
+									<li><input type="button" class="button alt" value="Restaurar" onclick="restoreDevice();" /></li>
 								</ul>
 							</div>
 						</section>

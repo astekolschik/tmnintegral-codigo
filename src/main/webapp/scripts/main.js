@@ -125,3 +125,10 @@ function selectAllCheckbox(chk){
 		this.checked = val;
 	  });
 }
+
+function setTipoEquiposSelectValues(dts){
+	var vals = [];
+	$.each(dts, function(i,e){
+	    $("#dt-select option[value='" + e + "']").prop("selected", true);
+	});
+}

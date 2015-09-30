@@ -39,7 +39,7 @@ public class JPATipoEquipoDaoTest {
     
     @Test
     public void testSaveNewTipoEquipo() {
-        TipoEquipo te = new TipoEquipo(999, "ping", "1", "1", "1", "pepe");
+        TipoEquipo te = new TipoEquipo(999, "test", "ping", "1", "1", "1", "pepe");
         try {
 			tipoEquipoDao.saveTipoEquipo(te);
 

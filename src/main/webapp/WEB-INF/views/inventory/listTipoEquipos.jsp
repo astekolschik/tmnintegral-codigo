@@ -17,38 +17,8 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
-		<script type="text/javascript">
-				$(document).ready(function() {
-				    $('#tipoEquipoTable').DataTable({
-				    	"language": {
-				    	    "sProcessing":     "Procesando...",
-				    	    "sLengthMenu":     "Mostrar _MENU_ registros",
-				    	    "sZeroRecords":    "No se encontraron resultados",
-				    	    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-				    	    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-				    	    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-				    	    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-				    	    "sInfoPostFix":    "",
-				    	    "sSearch":         "Buscar:",
-				    	    "sUrl":            "",
-				    	    "sInfoThousands":  ",",
-				    	    "sLoadingRecords": "Cargando...",
-				    	    "oPaginate": {
-				    	        "sFirst":    "Primero",
-				    	        "sLast":     "Último",
-				    	        "sNext":     "Siguiente",
-				    	        "sPrevious": "Anterior"
-				    	    },
-				    	    "oAria": {
-				    	        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-				    	        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-				    	    }
-				    	}
-				    });
-				} );
-		</script>
 	</head>
-	<body onload="setMenuValue('inventory');">
+	<body onload="setMenuValue('inventory');paginateTable('tipoEquipoTable')">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -69,6 +39,7 @@
 								<thead>
 									<tr>
 										<td>Id</td>
+										<td>Descripción</td>
 										<td>Comando default</td>
 										<td>SNMP Version default</td>
 										<td>Driver</td>
@@ -83,6 +54,7 @@
 									<c:forEach items="${model.tipoEquipoList}" var="te">
 										<tr>
 											<td>${te.id}</td>
+											<td>${te.description}</td>
 											<td>${te.default_comm_read}</td>
 											<td>${te.default_snmp_version}</td>
 											<td>${te.driver}</td>

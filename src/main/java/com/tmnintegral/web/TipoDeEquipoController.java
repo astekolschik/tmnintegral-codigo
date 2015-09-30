@@ -79,6 +79,7 @@ public class TipoDeEquipoController {
 	        throws ServletException, IOException {
 		
 		String idEquipo = request.getParameter("idequipo");
+		String description = request.getParameter("descripcion");
 		String defaultComm = request.getParameter("defaultComm");
 		String defaultSNMP = request.getParameter("defaultSNMP");
 		String driver= request.getParameter("driver");
@@ -86,9 +87,9 @@ public class TipoDeEquipoController {
 		String vendor = request.getParameter("vendor");
 		
 		if (idEquipo != null)
-			this.im.modificarTipoEquipo(Integer.valueOf(idEquipo), defaultComm, defaultSNMP, driver, technology, vendor);
+			this.im.modificarTipoEquipo(Integer.valueOf(idEquipo), description, defaultComm, defaultSNMP, driver, technology, vendor);
 		else
-			this.im.crearTipoEquipo(defaultComm, defaultSNMP, driver, technology, vendor);
+			this.im.crearTipoEquipo(description, defaultComm, defaultSNMP, driver, technology, vendor);
 		
 		return this.listarEquipos(request, response);
 	}

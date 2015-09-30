@@ -26,6 +26,7 @@ public class TipoEquipo implements Serializable{
     @Column(name = "id")
 	private int id; 
 	
+	private String description;
 	private String default_comm_read;
 	private String default_snmp_version;
 	private String driver; 
@@ -39,10 +40,11 @@ public class TipoEquipo implements Serializable{
 		super();
 	}
 	
-	public TipoEquipo(int id, String default_comm_read, String default_snmp_version, String driver, String technology,
+	public TipoEquipo(int id, String description, String default_comm_read, String default_snmp_version, String driver, String technology,
 			String vendor) {
 		super();
 		this.id = id;
+		this.description = description;
 		this.default_comm_read = default_comm_read;
 		this.default_snmp_version = default_snmp_version;
 		this.driver = driver;
@@ -134,6 +136,20 @@ public class TipoEquipo implements Serializable{
 	 */
 	public void setCommands(Set<Command> commands) {
 		this.commands = commands;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tmnintegral.domain.Command;
 import com.tmnintegral.service.ConfigurationManager;
+import com.tmnintegral.service.InventoryManager;
 
 /**
  * @author Agustina
@@ -32,6 +33,8 @@ public class CommandController {
 
 	@Autowired
 	private ConfigurationManager cm;
+	@Autowired
+	private InventoryManager im;
 	
 	@RequestMapping(value="/listComandos.htm")
     public ModelAndView listarComandos(HttpServletRequest request, HttpServletResponse response)
@@ -51,6 +54,8 @@ public class CommandController {
 		Command c = cm.getCommandById(
 				Integer.parseInt((String)request.getParameter("cId")));
 		myModel.put("commandObj", c);
+		myModel.put("deviceTypes", im.getTipoEquiposList());
+		
 		if (((String)request.getParameter("edit")).equals("true")){
 			myModel.put("edit", true);
 			myModel.put("displayEdit", "");
@@ -79,13 +84,14 @@ public class CommandController {
 	        throws ServletException, IOException {
 		
 		String idComando = request.getParameter("idCommand");
+		String nombrecomando = request.getParameter("nameComm");
 		String comando = request.getParameter("defaultComm");
 		String tipoComando = request.getParameter("tipocomando");
 		
 		if (idComando != null)
 			this.cm.modificarComando(Integer.parseInt(idComando), comando, tipoComando);
 		else
-			this.cm.crearComando(comando, tipoComando);
+			this.cm.crearComando(nombrecomando, comando, tipoComando);
 		
 		return this.listarComandos(request, response);
 	}
