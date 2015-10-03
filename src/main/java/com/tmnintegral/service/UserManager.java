@@ -29,6 +29,7 @@ public class UserManager implements Serializable{
 	@Autowired
 	private UserDao userDao;
 	
+	
 	/**
 	 * 
 	 * @param userId
@@ -188,7 +189,7 @@ public class UserManager implements Serializable{
         }
         return hash;
     }
-
+	
 	/**
 	 * @param roleDao the roleDao to set
 	 */

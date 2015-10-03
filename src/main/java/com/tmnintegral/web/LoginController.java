@@ -21,6 +21,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmnintegral.domain.User;
+import com.tmnintegral.service.LogManager;
 import com.tmnintegral.service.UserManager;
 
 /**
@@ -34,6 +35,8 @@ public class LoginController {
 	
 	@Autowired
 	private UserManager um;
+	@Autowired
+	private LogManager logManager;
 
 	@RequestMapping(value="/login.htm")
     public ModelAndView login(HttpSession session, HttpServletRequest request, HttpServletResponse response)
@@ -52,6 +55,7 @@ public class LoginController {
 	        	User u = um.autenticarUsuario(user, password);
 				if (u != null){
 					session.setAttribute("user", u);
+					logManager.saveLoginLog(u.getId());
 					return new ModelAndView("index", "model", myModel);
 				}else{
 					myModel.put("status", "Error en el usuario/contraseña. Intente nuevamente.");
@@ -78,6 +82,7 @@ public class LoginController {
 			String username = request.getParameter("username");
 	        try {
 				if (um.resetearContrasena(username)){
+					this.logManager.saveResetPassLog(username);
 					myModel.put("status", "Su nueva contraseña fue enviada por email.");
 					return new ModelAndView("login", "model", myModel);
 				}else{
@@ -96,6 +101,8 @@ public class LoginController {
     public ModelAndView logout(HttpSession session, SessionStatus status)
             throws ServletException, IOException {
 		
+		logManager.saveLogoutLog(((User)session.getAttribute("user")).getId());
+		
 		status.setComplete();
 		session.removeAttribute("user");
 		return new ModelAndView("login");
@@ -106,6 +113,13 @@ public class LoginController {
 	 */
 	public void setUm(UserManager um) {
 		this.um = um;
+	}
+
+	/**
+	 * @param logManager the logManager to set
+	 */
+	public void setLogManager(LogManager logManager) {
+		this.logManager = logManager;
 	}
 	
 }
