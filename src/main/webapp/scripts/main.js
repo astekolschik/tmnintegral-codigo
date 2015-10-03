@@ -136,3 +136,33 @@ function setTipoEquiposSelectValues(dts){
 function setdtValues(){
     $("#dtValues").val($("#dt-select").val());
 }
+
+function mostrarTopologiaRed(){
+	var idRed = $("#net-select").val();
+	var container = $('#net-container')[0];
+	if (idRed != -1){
+		
+		$.ajax({url: "/TMNIntegralWeb/displayNetworkGraph.htm?netId=" + idRed, success: function(result){
+			// provide data in the DOT language
+			var DOTstring = 'dinetwork {' + result + '}';
+			var parsedData = vis.network.convertDot(DOTstring);
+			
+			var data = {
+					nodes: parsedData.nodes,
+					edges: parsedData.edges
+			}
+			
+			var options = parsedData.options;
+			
+			// you can extend the options like a normal JSON variable:
+			options.nodes = {
+					color: 'red'
+			}
+			
+			// create a network
+			var network = new vis.Network(container, data, options);
+	    }});
+	}else{
+		alert('Debe seleccionar una red para visualizar.');
+	}
+}

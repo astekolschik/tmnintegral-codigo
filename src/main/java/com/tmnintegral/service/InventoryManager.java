@@ -76,6 +76,16 @@ public class InventoryManager implements Serializable{
 		return te;
 	}
 	
+	/**
+	 * Crea un nuevo tipo de equipo
+	 * @param description
+	 * @param defaultComm
+	 * @param defaultSNMP
+	 * @param driver
+	 * @param technology
+	 * @param vendor
+	 * @return
+	 */
 	public TipoEquipo crearTipoEquipo(String description, String defaultComm, String defaultSNMP,
 			String driver, String technology, String vendor){
 		
@@ -96,8 +106,23 @@ public class InventoryManager implements Serializable{
 		return te;
 	}
 	
+	/**
+	 * Elimina el tipo de equipo seleccionado
+	 * @param idTe
+	 */
 	public void borrarTipoEquipo(int idTe){
 		this.tipoEquipoDao.deleteTipoEquipo(idTe);
+	}
+	
+	public String obtenerTopologiaDeRed(int netId){
+		switch(netId){
+		case 1: return "red -> red -> 2; 2 -> 3; 2 -- 4; 2 -> red ";
+		case 2: return "red -> 2; 2 -> 3; 2 -- 4; 2 -> red; 5 -> 2";
+		case 3: return "red -> red ";
+		case 4: return "red -> 3; 2 -- 4; 2 -> red ";
+		}
+		
+		return "";
 	}
 	
 }

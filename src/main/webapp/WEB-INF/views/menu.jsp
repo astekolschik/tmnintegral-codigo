@@ -20,6 +20,7 @@
 				<a href="#">Inventario</a>
 				<ul>
 					<li><a href="listTipoEquipos.htm">Tipos de Equipo</a></li>
+					<li><a href="displayNetwork.htm">Topología de Red</a></li>
 				</ul>
 			</li>
 			<li id="menu-configuracion">
