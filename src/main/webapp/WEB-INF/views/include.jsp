@@ -11,6 +11,7 @@
 <script src="assets/js/main.js"></script>
 
 <script src="scripts/main.js"></script>
+<script src="scripts/topologia.js"></script>
 <!-- Data tables sorted -->
 <script src="scripts/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="scripts/jquery.dataTables.min.css" />

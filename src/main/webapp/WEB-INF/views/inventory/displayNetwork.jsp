@@ -33,14 +33,15 @@
 				</div>
 				
 				<div class="container">
-						<section class="16u 24u(narrower)">
+						<section class="31u 24u(narrower)">
 							<h3>Topología de la red</h3>
+							<div class="4u 8u(mobilep)">
+								<label>Seleccione la red que desea visualizar:</label>
+							</div>
+							<br/><br/>
 							<div class="row 100%">
-								<div class="4u 8u(mobilep)">
-									<label>Seleccione la red que desea visualizar:</label>
-								</div>
-								<div class="8u 16u(mobilep)">
-									<select id="net-select" style="width: 200px">
+								<div class="row" style="width: 30%; margin-left: 10px">
+									<select multiple id="net-select" style="width: 200px" onchange="mostrarTopologiaConImagenes();">
 										<option value="-1">Ninguna</option>
 										<option value="1">Red 1</option>
 										<option value="2">Red 2</option>
@@ -48,17 +49,11 @@
 										<option value="4">Red 4</option>
 									</select>
 								</div>
-								<div>
-									<input type="button" value="Mostrar" onclick="mostrarTopologiaRed();"/> 
-								</div>
+								<div class="row" style="width: 70%" id="net-container"></div>
 							</div>
-						</section>
-						<section class="16u 24u(narrower)" style="border-color: black; border-width: 2px">
-							<div class="row 100%" id="net-container"></div>
 						</section>
 					</div>
 				</div>
-			
 
 			<!-- Footer -->
 			<%@ include file="/WEB-INF/views/footer.jsp" %>
