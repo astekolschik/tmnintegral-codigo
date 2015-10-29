@@ -2,6 +2,7 @@ package com.tmnintegral.service;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,6 +38,13 @@ public class LogManager implements Serializable{
 		this.saveLog(ul);
 	}
 
+	public List<UserLog> getUserLogs(int userid){
+		return userLogDao.getUserLogs(userid);
+	}
+	
+	public List<UserLog> getLastUserLogs(int userid){
+		return userLogDao.getTenUserLogs(userid);
+	}
 	
 	private void saveLog(UserLog ul){
 		try {

@@ -17,6 +17,8 @@ public interface UserLogDao {
 	
 	public List<UserLog> getUserLogs(int userId);
 	
+	public List<UserLog> getTenUserLogs(int userId);
+	
 	public void saveUserLog(UserLog log) throws Exception;
 	
 }

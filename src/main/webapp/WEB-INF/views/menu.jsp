@@ -20,6 +20,12 @@
 				<a href="#">Inventario</a>
 				<ul>
 					<li><a href="listTipoEquipos.htm">Tipos de Equipo</a></li>
+					<!-- <li><a href="listDevice.htm">Equipos</a></li> -->
+					<!-- <li><a href="altaDevice.htm">Alta de Equipos</a></li> -->
+					<!-- <li><a href="listDevice.htm">Lista de Equipos</a></li> -->
+					<!-- <li><a href="listInterface.htm">Lista de Interfaces</a></li> -->
+					<!-- <li><a href="listRed.htm">Redes</a></li> -->
+					<li><a href="altaRed.htm">Alta de Red</a></li>
 					<li><a href="displayNetwork.htm">Topología de Red</a></li>
 				</ul>
 			</li>

@@ -59,4 +59,10 @@ public class JPAUserLogDao implements UserLogDao {
 		em.merge(log);
 	}
 
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+	public List<UserLog> getTenUserLogs(int userId) {
+		return em.createQuery("select ul from UserLog ul where ul.user= " + userId + "order by ul.id desc").setMaxResults(10).getResultList();
+	}
+
 }

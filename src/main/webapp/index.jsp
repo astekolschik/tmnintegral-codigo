@@ -89,6 +89,17 @@
 			<div>
 				<section class="12u 24u(narrower)" style="margin-left: 70px">
 					<h3>Bienvenido/a de vuelta, <c:out value="${user.name}"></c:out></h3>
+					<br/>
+					<div class="row">
+						Últimos movimientos: <br/>
+						<table style="border: 0px">
+							<c:forEach items="${model.logs}" var="log">
+								<tr>
+									<td>${log.log_desc}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
 				</section>
 			</div>
 			</c:if>

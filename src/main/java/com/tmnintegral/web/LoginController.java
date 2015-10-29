@@ -56,6 +56,7 @@ public class LoginController {
 				if (u != null){
 					session.setAttribute("user", u);
 					logManager.saveLoginLog(u.getId());
+					myModel.put("logs", logManager.getLastUserLogs(u.getId()));
 					return new ModelAndView("index", "model", myModel);
 				}else{
 					myModel.put("status", "Error en el usuario/contraseña. Intente nuevamente.");
