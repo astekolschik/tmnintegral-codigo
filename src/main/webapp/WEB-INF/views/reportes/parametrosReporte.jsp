@@ -35,7 +35,7 @@
 				<div class="container">
 						<h3>Parámetros del reporte</h3>
 						<section class="8u 16u(narrower)">
-							<form action="/TMNIntegralWeb/generarReporte.htm" method="post">
+							<form action="/TMNIntegralWeb/generarReporte.htm" method="post" onsubmit="return validarFormReporte();">
 								<div class="row 100%">
 									<div class="row 100%" style="margin-left: 10px">
 										<div class="row 100%">
@@ -58,8 +58,9 @@
 												<label>Equipos</label>
 											</div>
 											<div class="8u 16u(mobilep)">
+												<input type="hidden" name="lista-equipos-value">
 												<select multiple id="nombre-equipo" name="nombre-equipo">
-													<c:forEach items="${model.equipos}" var="equipo">
+													<c:forEach items="${model.devices}" var="equipo">
 														<option value="${equipo.id_device}">${equipo.ip}</option>
 													</c:forEach>
 												</select>
@@ -70,7 +71,7 @@
 												<label>Fecha desde</label>
 											</div>
 											<div class="8u 16u(mobilep)">
-												<input type="date" name="fecha-desde"/>
+												<input type="date" name="fecha-desde" id="fecha-desde"/>
 											</div>
 										</div>
 										<div class="row 100%">
@@ -78,7 +79,7 @@
 												<label>Fecha hasta</label>
 											</div>
 											<div class="8u 16u(mobilep)">
-												<input type="date" name="fecha-hasta"/>
+												<input type="date" name="fecha-hasta" id="fecha-hasta"/>
 											</div>
 										</div>
 										

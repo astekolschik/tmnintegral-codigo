@@ -18,19 +18,19 @@ public class Device implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @Column(name = "id_device")
+    @Column(name = "device_id")
 	private int id_device; 
 	private String communityRead;
 	private String hostName;
 	private String iosType;
 	private String iosVersion;
 	private String ip;
-	private int model;
-	private int serialNumber;
+	private String model;
+	private String serialNumber;
 	private String softwareRelease;
-	private TipoEquipo tipoEquipo;
-	private Interface interfaz;
-	private Red red;
+//	private TipoEquipo tipoEquipo;
+//	private Interface interfaz;
+//	private Red red;
 	//private Configuration configuration;
 	//private EquipmentInfo equipmentInfo;
 	private Boolean enable;
@@ -40,8 +40,8 @@ public class Device implements Serializable {
 		super();
 	}
 	
-	public Device(String communityRead, String hostName, String iosType, String iosVersion, String ip, int model,
-			int serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
+	public Device(String communityRead, String hostName, String iosType, String iosVersion, String ip, String model,
+			String serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
 		super();
 		//this.id_device = id_device;
 		this.communityRead = communityRead;
@@ -52,9 +52,9 @@ public class Device implements Serializable {
 		this.model = model;
 		this.serialNumber = serialNumber;
 		this.softwareRelease = softwareRelease;
-		this.tipoEquipo = tipoEquipo;
-		this.interfaz = interfaz;
-		this.red = red;
+//		this.tipoEquipo = tipoEquipo;
+//		this.interfaz = interfaz;
+//		this.red = red;
 		//this.configuration = configuration;
 		//this.equipmentInfo = equipmentInfo;
 		this.enable = enable;
@@ -87,30 +87,30 @@ public class Device implements Serializable {
 	
 	public void setIp(String ip){this.ip = ip;}
 	
-	public int getModel(){return model;}
+	public String getModel(){return model;}
 	
-	public void setModel(int model){this.model = model;}
+	public void setModel(String model){this.model = model;}
 	
-	public int getSerialNumber(){return serialNumber;}
+	public String getSerialNumber(){return serialNumber;}
 	
-	public void setSerialNumber(int sn){this.serialNumber = sn;}
+	public void setSerialNumber(String sn){this.serialNumber = sn;}
 	
 	public String getSoftwareRelease(){return softwareRelease;}
 	
 	public void setSoftwareRelease(String sr){this.softwareRelease = sr;}
 	
-	public TipoEquipo getTipoEquipo(){return tipoEquipo;}
+//	public TipoEquipo getTipoEquipo(){return tipoEquipo;}
+//	
+//	public void setTipoEquipo(TipoEquipo te){this.tipoEquipo = te;}
 	
-	public void setTipoEquipo(TipoEquipo te){this.tipoEquipo = te;}
+//	public Interface getInterface_Device(){return this.interfaz;}
+//	
+//	public void setInterface_Device(Interface interfaz){this.interfaz = interfaz;}
 	
-	public Interface getInterface_Device(){return this.interfaz;}
-	
-	public void setInterface_Device(Interface interfaz){this.interfaz = interfaz;}
-	
-	public Red getRed_Device(){return red;}
-	
-	public void setRed_Device(Red red){this.red = red;}
-	
+//	public Red getRed_Device(){return red;}
+//	
+//	public void setRed_Device(Red red){this.red = red;}
+//	
 	public Boolean getEnable_Device(){return enable;}
 	
 	public void setEnable_Device(Boolean enable){this.enable = enable;}

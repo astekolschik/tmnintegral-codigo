@@ -25,6 +25,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tmnintegral.domain.User;
+import com.tmnintegral.service.InventoryManager;
 import com.tmnintegral.service.LogManager;
 import com.tmnintegral.service.ReportManager;
 import com.tmnintegral.service.UserManager;
@@ -42,12 +43,17 @@ public class ReportController {
 	private LogManager logManager;
 	@Autowired
 	private ReportManager reportManager;
+	@Autowired
+	private InventoryManager inventoryManager;
 
 	@RequestMapping(value="/parametrosReporte.htm")
     public ModelAndView parametrosReporte(HttpSession session, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-		return new ModelAndView("reportes/parametrosReporte");
+		
+		Map<String, Object> myModel = new HashMap<>();
+		myModel.put("devices", this.inventoryManager.getDeviceList());
+		
+		return new ModelAndView("reportes/parametrosReporte", "model", myModel);
     }
 	
 	@RequestMapping(value="/generarReporte.htm")
@@ -55,7 +61,7 @@ public class ReportController {
             throws ServletException, IOException {
 		
 		String tipoReporte = request.getParameter("tipo-reporte");
-		String eqsId = "1";//request.getParameter("nombre-equipo");
+		String eqsId = "1";//request.getParameter("lista-equipos-value");
 		
 		String dateFromStr = request.getParameter("fecha-desde");
 		String dateToStr = request.getParameter("fecha-hasta");
@@ -88,6 +94,13 @@ public class ReportController {
 	 */
 	public void setReportManager(ReportManager reportManager) {
 		this.reportManager = reportManager;
+	}
+
+	/**
+	 * @param inventoryManager the inventoryManager to set
+	 */
+	public void setInventoryManager(InventoryManager inventoryManager) {
+		this.inventoryManager = inventoryManager;
 	}
 	
 }

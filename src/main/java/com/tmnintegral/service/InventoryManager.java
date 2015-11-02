@@ -29,8 +29,11 @@ public class InventoryManager implements Serializable{
 
 	@Autowired
 	private TipoEquipoDao tipoEquipoDao;
+	@Autowired
 	private DeviceDao deviceDao;
+	@Autowired
 	private InterfaceDao interfaceDao;
+	@Autowired
 	private RedDao redDao;
 
 	/**
@@ -147,8 +150,8 @@ public class InventoryManager implements Serializable{
 		return this.deviceDao.getDeviceList();
 	}
 	
-	public Device altaDevice(String communityRead, String hostName, String iosType, String iosVersion, String ip, int model,
-							int serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable) throws Exception{
+	public Device altaDevice(String communityRead, String hostName, String iosType, String iosVersion, String ip, String model,
+							String serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable) throws Exception{
 	
 	if (!existeIp(ip)){
 	
@@ -184,7 +187,7 @@ public class InventoryManager implements Serializable{
 		return d;
 	}
 	
-	public Device modificarDevice(String communityRead, String hostName, String iosType, String iosVersion, String ip, int model, int serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
+	public Device modificarDevice(String communityRead, String hostName, String iosType, String iosVersion, String ip, String model, String serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
 		Device d = this.getDevice(ip);
 		if (d != null){
 			if (!d.getCommunityRead().equals(communityRead))
@@ -203,12 +206,12 @@ public class InventoryManager implements Serializable{
 				d.setSerialNumber(serialNumber);
 			if (!d.getSoftwareRelease().equals(softwareRelease))
 				d.setSoftwareRelease(softwareRelease);
-			if (!d.getTipoEquipo().equals(tipoEquipo))
-				d.setTipoEquipo(tipoEquipo);
-			if (!d.getInterface_Device().equals(interfaz))
-				d.setInterface_Device(interfaz);
-			if (!d.getRed_Device().equals(red))
-				d.setRed_Device(red);
+//			if (!d.getTipoEquipo().equals(tipoEquipo))
+//				d.setTipoEquipo(tipoEquipo);
+//			if (!d.getInterface_Device().equals(interfaz))
+//				d.setInterface_Device(interfaz);
+//			if (!d.getRed_Device().equals(red))
+//				d.setRed_Device(red);
 			if (!d.getEnable_Device().equals(enable))
 				d.setEnable_Device(enable);
 			
@@ -218,7 +221,7 @@ public class InventoryManager implements Serializable{
 		return d;
 	}
 	
-	public Device modificarDevice(int id_device, String communityRead, String hostName, String iosType, String iosVersion, String ip, int model, int serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
+	public Device modificarDevice(int id_device, String communityRead, String hostName, String iosType, String iosVersion, String ip, String model, String serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
 		Device d = this.getDevice(id_device);
 		if (d != null){
 			if (!d.getCommunityRead().equals(communityRead))
@@ -237,12 +240,12 @@ public class InventoryManager implements Serializable{
 				d.setSerialNumber(serialNumber);
 			if (!d.getSoftwareRelease().equals(softwareRelease))
 				d.setSoftwareRelease(softwareRelease);
-			if (!d.getTipoEquipo().equals(tipoEquipo))
-				d.setTipoEquipo(tipoEquipo);
-			if (!d.getInterface_Device().equals(interfaz))
-				d.setInterface_Device(interfaz);
-			if (!d.getRed_Device().equals(red))
-				d.setRed_Device(red);
+//			if (!d.getTipoEquipo().equals(tipoEquipo))
+//				d.setTipoEquipo(tipoEquipo);
+//			if (!d.getInterface_Device().equals(interfaz))
+//				d.setInterface_Device(interfaz);
+//			if (!d.getRed_Device().equals(red))
+//				d.setRed_Device(red);
 			if (!d.getEnable_Device().equals(enable))
 				d.setEnable_Device(enable);
 			

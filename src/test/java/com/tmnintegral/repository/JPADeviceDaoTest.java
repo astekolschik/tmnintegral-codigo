@@ -42,7 +42,7 @@ public class JPADeviceDaoTest {
     @Test
     public void testSaveNewDevice() {
     	TipoEquipo te = tipoEquipoDao.getTipoEquipo(1);
-        Device d = new Device("TEST", "TEST", "TEST","TEST","TEST",1,1,"TEST", te, null, null, true);
+        Device d = new Device("TEST", "TEST", "TEST","TEST","TEST","TEST","TEST","TEST", te, null, null, true);
         try {
 			deviceDao.saveDevice(d);
 			

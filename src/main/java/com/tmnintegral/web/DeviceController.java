@@ -58,8 +58,8 @@ public class DeviceController {
 		 	String iosType = request.getParameter("iosType");
 		 	String iosVersion = request.getParameter("iosVersion");
 		 	String ip = request.getParameter("ip");
-		 	int model = Integer.parseInt(request.getParameter("model"));
-		 	int serialNumber = Integer.parseInt(request.getParameter("serialNumber"));
+		 	String model = request.getParameter("model");
+		 	String serialNumber = request.getParameter("serialNumber");
 		    String softwareRelease = request.getParameter("softwareRelease");
 		    int id_tipoEquipo = Integer.parseInt(request.getParameter("id_tipoEquipo")); //necesito que venga un nombre del tipo y despues lo busco con el IM
 		    String name = request.getParameter("name");
@@ -96,8 +96,8 @@ public class DeviceController {
 	 	String iosType = request.getParameter("iosType");
 	 	String iosVersion = request.getParameter("iosVersion");
 	 	String ip = request.getParameter("ip");
-	 	int model = Integer.parseInt(request.getParameter("model"));
-	 	int serialNumber = Integer.parseInt(request.getParameter("serialNumber"));
+	 	String model = request.getParameter("model");
+	 	String serialNumber = request.getParameter("serialNumber");
 	    String softwareRelease = request.getParameter("softwareRelease");
 	    int id_tipoEquipo = Integer.parseInt(request.getParameter("id_tipoEquipo")); //necesito que venga un nombre del tipo y despues lo busco con el IM
 	    String name = request.getParameter("name");
@@ -132,8 +132,8 @@ public class DeviceController {
 	 	String iosType = request.getParameter("iosType");
 	 	String iosVersion = request.getParameter("iosVersion");
 	 	String ip = request.getParameter("ip");
-	 	int model = Integer.parseInt(request.getParameter("model"));
-	 	int serialNumber = Integer.parseInt(request.getParameter("serialNumber"));
+	 	String model = request.getParameter("model");
+	 	String serialNumber = request.getParameter("serialNumber");
 	    String softwareRelease = request.getParameter("softwareRelease");
 	    int id_tipoEquipo = Integer.parseInt(request.getParameter("id_tipoEquipo")); //necesito que venga un nombre del tipo y despues lo busco con el IM
 	    String name = request.getParameter("name");
