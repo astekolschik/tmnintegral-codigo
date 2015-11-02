@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
- * @author Usuario
+ * @author AGustina
  *
  */
 @Entity

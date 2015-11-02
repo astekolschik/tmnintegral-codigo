@@ -36,6 +36,9 @@
 					<li><a href="restoreConfiguration.htm">Restaurar</a></li>
 				</ul>
 			</li>
+			<li id="menu-reportes">
+				<a href="parametrosReporte.htm">Reportes</a>
+			</li>
 			<li><a href="logout.htm">Cerrar Sesión</a></li>
 		</c:if>
 	</ul>

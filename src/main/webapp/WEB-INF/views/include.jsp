@@ -12,6 +12,8 @@
 
 <script src="scripts/main.js"></script>
 <script src="scripts/topologia.js"></script>
+<script src="scripts/reportes.js"></script>
+<link rel="stylesheet" href="scripts/reportes.css" />
 <!-- Data tables sorted -->
 <script src="scripts/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="scripts/jquery.dataTables.min.css" />
@@ -19,3 +21,5 @@
 <!-- Graficos para toppologia de red -->
 <script src="scripts/vis.min.js"></script>
 <link rel="stylesheet" href="scripts/vis.min.css" />
+<!-- Gráficos para reportes -->
+<script src="scripts/d3.min.js"></script>
