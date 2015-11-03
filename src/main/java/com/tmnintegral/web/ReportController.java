@@ -77,8 +77,20 @@ public class ReportController {
 		
 		String resp = "";
 		switch(tipoReporte){
-			case "1":
+			case "1"://Memoria disponible
 				resp = this.reportManager.getInformationForMemoriaDisponibleReport(eqsId.split(","), dateFrom, dateTo);
+				break;
+			case "2"://Memoria utilizada
+				resp = this.reportManager.getInformationForMemoriaUtilizadaReport(eqsId.split(","), dateFrom, dateTo);
+				break;
+			case "3"://Trafico entrante
+				resp = this.reportManager.getInformationForTraficoEntranteReport(eqsId.split(","), dateFrom, dateTo);
+				break;
+			case "4"://Trafico saliente
+				resp = this.reportManager.getInformationForTraficoSalienteReport(eqsId.split(","), dateFrom, dateTo);
+				break;
+			case "5"://Utilizacion CPU
+				resp = this.reportManager.getInformationForUtilizacionCPUReport(eqsId.split(","), dateFrom, dateTo);
 				break;
 		}
 		
