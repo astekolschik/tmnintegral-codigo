@@ -4,9 +4,22 @@ function validarFormReporte(){
 		return false;
 	}
 	
-	if ($('#fecha-desde').val() == -1){
-		alert('Debe seleccionar el tipo de reporte.');
+	if ($('#fecha-desde').val() == "" ||  $('#fecha-hasta').val() == ""){
+		alert('Debe seleccionar las fechas para el reporte.');
 		return false;
+	}
+	
+	if ($('#nombre-equipo').val().length == 0){
+		alert('Debe seleccionar al menos un equipo.');
+		return false;
+	}else{
+		var listEq = "";
+		for (var i=0; i < $('#nombre-equipo').val().length; i++){
+			if (i != 0)
+				listEq += ",";
+			listEq += $('#nombre-equipo').val()[i];
+		}
+		$('#lista-equipos-value').val(listEq);
 	}
 	
 	return true;

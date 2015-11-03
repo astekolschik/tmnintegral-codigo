@@ -61,7 +61,7 @@ public class ReportController {
             throws ServletException, IOException {
 		
 		String tipoReporte = request.getParameter("tipo-reporte");
-		String eqsId = "1";//request.getParameter("lista-equipos-value");
+		String eqsId = request.getParameter("lista-equipos-value");
 		
 		String dateFromStr = request.getParameter("fecha-desde");
 		String dateToStr = request.getParameter("fecha-hasta");
@@ -75,8 +75,13 @@ public class ReportController {
 			System.err.println("Error al parsear las fechas");
 		}
 		
+		String resp = "";
+		switch(tipoReporte){
+			case "1":
+				resp = this.reportManager.getInformationForMemoriaDisponibleReport(eqsId.split(","), dateFrom, dateTo);
+				break;
+		}
 		
-		String resp = this.reportManager.getInformationForMemoriaDisponibleReport(eqsId.split(","), dateFrom, dateTo);
 		Map<String, Object> myModel = new HashMap<>();
 		myModel.put("reportData", resp);
 		return new ModelAndView("reportes/reporte", "model", myModel);
