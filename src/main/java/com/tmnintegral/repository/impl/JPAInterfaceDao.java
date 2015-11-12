@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tmnintegral.domain.Interface;
+import com.tmnintegral.domain.InterfaceStatus;
 import com.tmnintegral.repository.InterfaceDao;
 
 /**
@@ -94,6 +95,18 @@ public class JPAInterfaceDao implements InterfaceDao{
     @SuppressWarnings("unchecked")
 	public void deleteInterface(String name) {
 		em.createQuery("delete from Interface i where i.name=" + name).executeUpdate();
+	}
+
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+	public List<InterfaceStatus> getInterfacesDown() {
+		return em.createQuery("select i from InterfaceStatus i where i.valor='down' and retry_enable=3 order by i.id").getResultList();
+	}
+
+    @Transactional(readOnly = false)
+    @SuppressWarnings("unchecked")
+	public void updateInterfaceStatus(InterfaceStatus is) {
+    	em.merge(is);
 	}
     
 

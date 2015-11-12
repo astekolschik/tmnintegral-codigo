@@ -29,4 +29,6 @@ public interface UserDao {
 	
 	public void deleteUser(String username);
 	
+	public List<User> getAdministratorUsers();
+	
 }

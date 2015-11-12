@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.NoResultException;
 
 import com.tmnintegral.domain.Interface;
+import com.tmnintegral.domain.InterfaceStatus;
 
 /**
  * @author Martín
@@ -28,4 +29,7 @@ public interface InterfaceDao {
 	
 	public void deleteInterface(int id);
 	
+	public List<InterfaceStatus> getInterfacesDown();
+	
+	public void updateInterfaceStatus(InterfaceStatus is);
 }

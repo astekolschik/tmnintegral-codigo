@@ -23,6 +23,8 @@ import com.tmnintegral.repository.UserDao;
 public class JPAUserDao implements UserDao {
 
 	private EntityManager em = null;
+	
+	private static String ADMIN_ROLE = "1";
 
     /*
      * Sets the entity manager.
@@ -120,6 +122,12 @@ public class JPAUserDao implements UserDao {
     @SuppressWarnings("unchecked")
 	public void deleteUser(String username) {
     	em.createQuery("delete from User u where u.user_name='" + username + "'").executeUpdate();
+	}
+
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+	public List<User> getAdministratorUsers() {
+    	return em.createQuery("select u from User u where u.role_id= " + ADMIN_ROLE + " order by u.id").getResultList();
 	}
 
 }
