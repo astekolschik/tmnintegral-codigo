@@ -17,7 +17,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
-	<body onload="setMenuValue('reportes'); generarGrafico(${model.reportData});">
+	<body onload="setMenuValue('reportes'); generarGrafico(${model.reportData});fillTable(${model.reportData});paginateTable('reporte-table');">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -35,6 +35,31 @@
 						<h3>Reporte</h3>
 						<section class="8u 16u(narrower)">
 							<div class="row" style="width: 1000px;height: 700px; margin-left: 30px;" id="div-reporte">
+							</div>
+						</section>
+						<section class="8u 16u(narrower)">
+							<div class="row" style="width: 500px;height: 700px; margin-left: 30px;">
+								<table id="reporte-table">
+									<thead>
+										<tr>
+											<td>Nombre del equipo</td>
+											<td>Fecha</td>
+											<td>Valor</td>
+										</tr>
+									</thead>
+									<tbody>
+									
+										<c:forEach items="${model.reportData}" var="eqs">
+									<%-- 		<c:forEach items="${eqs.Data}" var="eqData">
+												<tr>
+													<td><c:out value="${eqs.Equipment}"></c:out> </td>
+													<td>${eqData.Date}</td>
+													<td>${eqData.Value}</td>
+												</tr>
+											</c:forEach> --%>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</section>
 					</div>

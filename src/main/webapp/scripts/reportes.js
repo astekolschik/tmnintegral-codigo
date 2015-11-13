@@ -25,6 +25,19 @@ function validarFormReporte(){
 	return true;
 }
 
+function fillTable(info){
+	alert(info);
+	for (var i = 0; i < info.length; i++){
+		var eq = info[i];
+		for (j = 0; j < eq.Data.length; j++){
+			var newRowContent = "<tr><td>" + eq.Equipment + "</td>" +
+								"<td>" + eq.Data[j].Date  + "</td>" +
+								"<td>" + eq.Data[j].Value  + "</td></tr>";
+			$(newRowContent).appendTo($("#reporte-table"));
+		}
+	}
+}
+
 function generarGrafico(data) {
 	        var margin = {
 	            top: 20,

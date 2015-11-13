@@ -16,7 +16,16 @@
 <link rel="stylesheet" href="scripts/reportes.css" />
 <!-- Data tables sorted -->
 <script src="scripts/jquery.dataTables.min.js"></script>
+<script src="scripts/dataTables.buttons.min.js"></script>
+<script src="scripts/buttons.flash.min.js"></script>
+<script src="scripts/buttons.html5.min.js"></script>
+<script src="scripts/buttons.print.min.js"></script>
+<script src="scripts/jszip.min.js"></script>
+<script src="scripts/pdfmake.min.js"></script>
+<script src="scripts/vfs_fonts.js"></script>
+
 <link rel="stylesheet" href="scripts/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="scripts/buttons.dataTables.min.css" />
 
 <!-- Graficos para toppologia de red -->
 <script src="scripts/vis.min.js"></script>

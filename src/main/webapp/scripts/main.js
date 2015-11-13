@@ -115,7 +115,11 @@ function paginateTable(tableId){
     	        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
     	        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
     	    }
-    	}
+    	},
+    	dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf'
+        ]
     });
 }
 
