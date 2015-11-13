@@ -32,4 +32,6 @@ public interface InterfaceDao {
 	public List<InterfaceStatus> getInterfacesDown();
 	
 	public void updateInterfaceStatus(InterfaceStatus is);
+	
+	public List<InterfaceStatus> getInterfaceAlarmed();
 }

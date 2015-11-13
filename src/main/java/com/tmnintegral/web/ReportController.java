@@ -21,14 +21,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tmnintegral.domain.User;
 import com.tmnintegral.service.InventoryManager;
 import com.tmnintegral.service.LogManager;
 import com.tmnintegral.service.ReportManager;
-import com.tmnintegral.service.UserManager;
 
 /**
  * @author Usuario
@@ -97,6 +94,16 @@ public class ReportController {
 		Map<String, Object> myModel = new HashMap<>();
 		myModel.put("reportData", resp);
 		return new ModelAndView("reportes/reporte", "model", myModel);
+    }
+	
+	@RequestMapping(value="/alarmas.htm")
+    public ModelAndView getAlarmas(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+		
+		Map<String, Object> myModel = new HashMap<>();
+		myModel.put("alarmas", this.reportManager.getAlarmsSent());
+		
+		return new ModelAndView("reportes/alarmas", "model", myModel);
     }
 	
 	/**

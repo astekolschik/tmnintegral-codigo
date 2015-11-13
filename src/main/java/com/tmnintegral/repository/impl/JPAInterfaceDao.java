@@ -108,6 +108,12 @@ public class JPAInterfaceDao implements InterfaceDao{
 	public void updateInterfaceStatus(InterfaceStatus is) {
     	em.merge(is);
 	}
+
+    @Transactional(readOnly = true)
+    @SuppressWarnings("unchecked")
+	public List<InterfaceStatus> getInterfaceAlarmed() {
+		return em.createQuery("select i from InterfaceStatus i where i.valor='down' and retry_enable=0 order by i.id").getResultList();
+	}
     
 
 }

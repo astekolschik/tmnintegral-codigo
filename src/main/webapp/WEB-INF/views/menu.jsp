@@ -37,7 +37,11 @@
 				</ul>
 			</li>
 			<li id="menu-reportes">
-				<a href="parametrosReporte.htm">Reportes</a>
+				<a href="#">Monitoreo</a>
+				<ul>
+					<li><a href="parametrosReporte.htm">Reportes</a></li>
+					<li><a href="alarmas.htm">Alarmas enviadas</a></li>
+				</ul>
 			</li>
 			<li><a href="logout.htm">Cerrar Sesión</a></li>
 		</c:if>

@@ -8,8 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  * @author Agustina
@@ -29,9 +27,6 @@ public class InterfaceStatus implements Serializable {
 	private String elementName;
 	private BigInteger last_update_state;
 	private int retry_enable;
-	@Column(name = "last_email_sent")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date last_email_sent;
 	
 	public InterfaceStatus(){
 		super();
@@ -46,14 +41,13 @@ public class InterfaceStatus implements Serializable {
 	 * @param retry_enable
 	 */
 	public InterfaceStatus(int idVariable, String valor, String elementName, BigInteger last_update_state,
-			int retry_enable, Date last_email_sent) {
+			int retry_enable) {
 		super();
 		this.idVariable = idVariable;
 		this.valor = valor;
 		this.elementName = elementName;
 		this.last_update_state = last_update_state;
 		this.retry_enable = retry_enable;
-		this.last_email_sent = last_email_sent;
 	}
 
 	/**
@@ -110,6 +104,14 @@ public class InterfaceStatus implements Serializable {
 	public BigInteger getLast_update_state() {
 		return last_update_state;
 	}
+	
+	/**
+	 * Get date in format
+	 * @return
+	 */
+	public Date getLastUpdateDate(){
+		return new Date(this.getLast_update_state().longValue());
+	}
 
 
 	/**
@@ -133,22 +135,6 @@ public class InterfaceStatus implements Serializable {
 	 */
 	public void setRetry_enable(int retry_enable) {
 		this.retry_enable = retry_enable;
-	}
-
-
-	/**
-	 * @return the last_email_sent
-	 */
-	public Date getLast_email_sent() {
-		return last_email_sent;
-	}
-
-
-	/**
-	 * @param last_email_sent the last_email_sent to set
-	 */
-	public void setLast_email_sent(Date last_email_sent) {
-		this.last_email_sent = last_email_sent;
 	}
 
 

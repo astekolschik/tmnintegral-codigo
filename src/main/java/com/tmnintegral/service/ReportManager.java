@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.tmnintegral.domain.EquipmentInformation;
+import com.tmnintegral.domain.InterfaceStatus;
+import com.tmnintegral.repository.InterfaceDao;
 import com.tmnintegral.repository.ReportDao;
 
 /**
@@ -26,6 +28,8 @@ public class ReportManager implements Serializable{
 	
 	@Autowired
 	private ReportDao reportDao;
+	@Autowired
+	private InterfaceDao interfaceDao;
 	@Autowired
 	private InventoryManager inventoryManager;
 
@@ -274,6 +278,11 @@ public class ReportManager implements Serializable{
 		return result;
 	}
 	
+	public List<InterfaceStatus> getAlarmsSent(){
+		return this.interfaceDao.getInterfaceAlarmed();
+	}
+	
+	
 	private List<EquipmentInformation> getEquipmentInformationForReport(int eqID, Date from, Date to){
 		return this.reportDao.getEquipmentInformation(eqID, from, to);
 	}
@@ -284,6 +293,13 @@ public class ReportManager implements Serializable{
 	 */
 	public void setReportDao(ReportDao reportDao) {
 		this.reportDao = reportDao;
+	}
+
+	/**
+	 * @param interfaceDao the interfaceDao to set
+	 */
+	public void setInterfaceDao(InterfaceDao interfaceDao) {
+		this.interfaceDao = interfaceDao;
 	}
 	
 
