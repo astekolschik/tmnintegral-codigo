@@ -272,35 +272,21 @@ public class InventoryManager implements Serializable{
 		return this.interfaceDao.getInterfaceList();
 	}
 	
-	public Interface altaInterface(String adminStatus, String alias, String name, int shelf, int slot, int port, int subPort, String type, Device d) throws Exception{
-
-			if (!existeNameInterface(name)){
-
-				Interface i = new Interface(adminStatus, alias, name, shelf, slot, port, subPort, type, d);
-
-				interfaceDao.saveInterface(i);
-
-				return i;
-			}else{
-				throw new Exception("Nombre de la interface ya está en uso");
-			}
+	public void eliminarInterface(Integer id){
+		interfaceDao.deleteInterface(id);
 	}
-	
-	private Boolean existeNameInterface(String name){
-		if (interfaceDao.getInterface(name) != null){
-			return true;
-		}return false;
-	}
-	
-	public void eliminarInterface(String name){interfaceDao.deleteInterface(name);}
 	
 	public void eliminarInterface(Interface i){interfaceDao.deleteInterface(i);}
 	
-	public Interface modificarInterface(String adminStatus, String alias, String name, int shelf, int slot, int port, int subPort, String type, Device d){
-		Interface i = this.getInterface(name);
+	public Interface modificarInterface(Integer id, String adminStatus, String alias, String name, Integer shelf, Integer slot, 
+			Integer port, Integer subPort, String type, Integer deviceId, Integer ifIndex, String ipAdEntIfIndex, 
+			String mac, Integer ip_next_hop, String mac_next_hop){
+		Interface i = this.getInterface(id);
 		if (i != null){
 			if (!i.getAdminStatus().equals(adminStatus))
 				i.setAdminStatus(adminStatus);
+			if (!i.getAlias().equals(alias))
+				i.setAlias(alias);
 			if (!i.getName().equals(name))
 				i.setName(name);
 			if (i.getShelf() != (shelf))
@@ -309,16 +295,54 @@ public class InventoryManager implements Serializable{
 				i.setSlot(slot);
 			if (i.getPort() != (port))
 				i.setPort(port);
-			if (i.getSubPort() != subPort)
+			if (i.getSubPort() != (subPort))
 				i.setSubPort(subPort);
 			if (!i.getType().equals(type))
 				i.setType(type);
-			if (!i.getDevice().equals(d))
-				i.setDevice(d);
+			if (i.getId_device()!= deviceId)
+				i.setId_device(deviceId);
+			if (i.getIfIndex()!= ifIndex)
+				i.setIfIndex(ifIndex);
+			if (!i.getIpAdEntIfIndex().equals(ipAdEntIfIndex))
+				i.setIpAdEntIfIndex(ipAdEntIfIndex);
+			if (i.getMac()!= mac)
+				i.setMac(mac);
+			if (i.getIp_next_hop()!=ip_next_hop)
+				i.setIp_next_hop(ip_next_hop);
+			if (i.getMac_next_hop()!= mac_next_hop)
+				i.setMac_next_hop(mac_next_hop);
 			
+			i.setLast_update_date(new Date());
 			this.interfaceDao.updateInterface(i);
 		}
+		return i;
+	}
+	
+	public Interface crearInterface(String adminStatus, String alias, String name, int shelf, int slot, 
+			int port, int subPort, String type, int deviceId, int ifIndex, String ipAdEntIfIndex, 
+			String mac, int ip_next_hop, String mac_next_hop){
+		Interface i = new Interface();
+		i.setAdminStatus(adminStatus);
+		i.setAlias(alias);
+		i.setName(name);
+		i.setShelf(shelf);
+		i.setSlot(slot);
+		i.setPort(port);
+		i.setSubPort(subPort);
+		i.setType(type);
+		i.setId_device(deviceId);
+		i.setIfIndex(ifIndex);
+		i.setIpAdEntIfIndex(ipAdEntIfIndex);
+		i.setMac(mac);
+		i.setIp_next_hop(ip_next_hop);
+		i.setMac_next_hop(mac_next_hop);
+		i.setLast_update_date(new Date());
 		
+		try {
+			this.interfaceDao.saveInterface(i);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return i;
 	}
 	

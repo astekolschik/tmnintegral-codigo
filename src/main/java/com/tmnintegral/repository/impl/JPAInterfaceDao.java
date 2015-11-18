@@ -35,7 +35,7 @@ public class JPAInterfaceDao implements InterfaceDao{
 	public Interface getInterface(int id) throws NoResultException{
     	Interface i = null;
     	try{
-    		i = (Interface) em.createQuery("select i from Interfacei where i.id = " + id).getSingleResult();
+    		i = (Interface) em.createQuery("select i from Interface i where i.id = " + id).getSingleResult();
     	}catch(NoResultException e){
     		//log ("No se encontro el rol con id: " + roleId);
     	}
