@@ -115,6 +115,22 @@ function deleteRed(idRed){
 	window.location.replace("/TMNIntegralWeb/eliminarRed.htm?rId=" + idRed);
 }
 
+function displayDevice(rId, isEdition){
+	window.location.replace("/TMNIntegralWeb/displayDevice.htm?dId=" + rId + "&edit=" + isEdition);
+}
+
+function nuevoEquipo(){
+	window.location.replace("/TMNIntegralWeb/nuevoEquipo.htm");
+}
+
+function displayLisDevice(){
+	window.location.replace("/TMNIntegralWeb/listDevice.htm");
+}
+
+function deleteDevice(idEquipo){
+	window.location.replace("/TMNIntegralWeb/eliminarEquipo.htm?dId=" + idEquipo);
+}
+
 
 function setEnableFields(isEnabled){
 	$('input[type=text]').each(function () {

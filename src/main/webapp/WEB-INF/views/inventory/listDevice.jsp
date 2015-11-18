@@ -18,7 +18,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
 	</head>
-	<body onload="setMenuValue('inventory');">
+	<body onload="setMenuValue('inventory');paginateTable('deviceTable')">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -31,13 +31,13 @@
 						<%@ include file="/WEB-INF/views/menu.jsp" %>
 
 				</div>
+				
 				<div class="container">
 						<section class="12u 24u(narrower)">
 							<h3>Administración de Equipos</h3>
-							<table class="default">
+							<table id="deviceTable" class="default">
 								<thead>
 									<tr>
-										<td>#</td>
 										<td>Id</td>
 										<td>Community Reas</td>
 										<td>Host Name</td>
@@ -48,15 +48,20 @@
 										<td>Número de Serie</td>
 										<td>Software Release</td>
 										<td>Tipo de Equipo</td>
+										<td>Red</td>
+										<td>Configuración</td>
+										<td>Información del Equipo</td>
+										<td>Enable</td>
+										<td>Última Actualización</td>
+										<td>Ver</td>
+										<td>Modificar</td>
+										<td>Eliminar</td>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${model.deviceList}" var="de">
 										<tr>
-											<td>
-												<input type="checkbox" name="userCheck" value="${de.id}"/>
-											</td>
-											<td>${de.id}</td>
+											<td>${de.device_id}</td>
 											<td>${de.communityRead}</td>
 											<td>${de.hostName}</td>
 											<td>${de.iosType}</td>
@@ -65,14 +70,24 @@
 											<td>${de.model}</td>
 											<td>${de.serialNumber}</td>
 											<td>${de.softwareRelease}</td>
-											<td>${de.tipoEquipo.id}</td>
-											<td>${de.interfaz.name}</td>
-											<td>${de.red.net}</td>
+											<td>${de.id_device_type}</td>
+											<td>${de.id_network}</td>
+											<td>${de.id_configuration}</td>
+											<td>${de.id_equipment_info}</td>
 											<td>${de.enable}</td>
+											<td>${de.last_update_date}</td>
+											<td><input type="image" src="images/view.png" onclick="displayDevice(${de.device_id}, false)" style="width: 20px;height: 20px;"></td>
+											<td><input type="image" src="images/update.png" onclick="displayDevice(${de.device_id}, true)" style="width: 20px;height: 20px;"></td>
+											<td><input type="image" src="images/delete.png" onclick="deleteDevice(${de.device_id})" style="width: 20px;height: 20px;"></td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
+							<div class="row 100%">
+								<ul class="actions">
+									<li><input type="button" class="button alt" value="Nueva" onclick="nuevoEquipo();" /></li>
+								</ul>
+							</div>
 						</section>
 					</div>
 				</div>
@@ -80,5 +95,6 @@
 
 			<!-- Footer -->
 			<%@ include file="/WEB-INF/views/footer.jsp" %>
+		</div>
 	</body>
 </html>
