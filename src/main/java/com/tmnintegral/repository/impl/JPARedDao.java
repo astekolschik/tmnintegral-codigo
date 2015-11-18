@@ -34,7 +34,7 @@ public class JPARedDao implements RedDao{
 	public Red getRed(int id_red) throws NoResultException{
     	Red r = null;
     	try{
-    		r = (Red) em.createQuery("select r from Network r where r.id_red = " + id_red).getSingleResult();
+    		r = (Red) em.createQuery("select r from Red r where r.id_network = " + id_red).getSingleResult();
     	}catch(NoResultException e){
     		//log ("No se encontro el rol con id: " + roleId);
     	}
@@ -46,7 +46,7 @@ public class JPARedDao implements RedDao{
 	public Red getRed(String net) throws NoResultException{
     	Red r = null;
     	try{
-    		r = (Red) em.createQuery("select r from Red r where r.net = " + net).getSingleResult();
+    		r = (Red) em.createQuery("select r from Red r where r.network = " + net).getSingleResult();
     	}catch(NoResultException e){
     		//log ("No se encontro el rol con id: " + roleId);
     	}
@@ -56,19 +56,15 @@ public class JPARedDao implements RedDao{
     @Transactional(readOnly = true)
     @SuppressWarnings("unchecked")
 	public List<Red> getRedList() {
-		return em.createQuery("select r from Red r order by r.id_red").getResultList();
+		return em.createQuery("select r from Red r order by r.id_network").getResultList();
 	}
 
     @Transactional(readOnly = false)
     @SuppressWarnings("unchecked")
 	public void saveRed(Red r) throws Exception {
-    	if (this.getRed(r.getId_red()) == null){
-    		int id_red = (Integer) em.createQuery("select max(id_red) + 1 from Red").getSingleResult();
-    		r.setId_red(id_red);
-    		em.merge(r);
-    	}else{
-    		throw new Exception("La red con ese id ya existe");
-    	}
+		int id_red = (Integer) em.createQuery("select max(id_network) + 1 from Red").getSingleResult();
+		r.setId_network(id_red);
+		em.merge(r);
 	}
     
 
@@ -87,13 +83,13 @@ public class JPARedDao implements RedDao{
     @Transactional(readOnly = false)
     @SuppressWarnings("unchecked")
 	public void deleteRed(int id_red) {
-		em.createQuery("delete from Red r where r.id_red=" + id_red).executeUpdate();
+		em.createQuery("delete from Red r where r.id_network=" + id_red).executeUpdate();
 	}
     
     @Transactional(readOnly = false)
     @SuppressWarnings("unchecked")
 	public void deleteRed(String net) {
-		em.createQuery("delete from Red r where r.net=" + net).executeUpdate();
+		em.createQuery("delete from Red r where r.network=" + net).executeUpdate();
 	}
     
 

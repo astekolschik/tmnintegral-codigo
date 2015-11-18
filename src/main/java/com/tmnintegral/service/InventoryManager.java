@@ -4,19 +4,23 @@
 package com.tmnintegral.service;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.tmnintegral.domain.TipoEquipo;
-import com.tmnintegral.repository.TipoEquipoDao;
+import com.tmnintegral.domain.Configuration;
 import com.tmnintegral.domain.Device;
-import com.tmnintegral.repository.DeviceDao;
+import com.tmnintegral.domain.EquipmentInformation;
 import com.tmnintegral.domain.Interface;
-import com.tmnintegral.repository.InterfaceDao;
 import com.tmnintegral.domain.Red;
+import com.tmnintegral.domain.TipoEquipo;
+import com.tmnintegral.repository.ConfigurationDao;
+import com.tmnintegral.repository.DeviceDao;
+import com.tmnintegral.repository.InterfaceDao;
 import com.tmnintegral.repository.RedDao;
+import com.tmnintegral.repository.TipoEquipoDao;
 
 /**
  * @author Agustina/Martin
@@ -35,6 +39,8 @@ public class InventoryManager implements Serializable{
 	private InterfaceDao interfaceDao;
 	@Autowired
 	private RedDao redDao;
+	@Autowired
+	private ConfigurationDao configurationDao;
 
 	/**
 	 * Devuelve la lista de los tipos de equipo
@@ -128,10 +134,10 @@ public class InventoryManager implements Serializable{
 	
 	public String obtenerTopologiaDeRed(int netId){
 		switch(netId){
-		case 1: return "red -> red -> 2; 2 -> 3; 2 -- 4; 2 -> red ";
-		case 2: return "red -> 2; 2 -> 3; 2 -- 4; 2 -> red; 5 -> 2";
-		case 3: return "red -> red ";
-		case 4: return "red -> 3; 2 -- 4; 2 -> red ";
+			case 1: return "red -> red -> 2; 2 -> 3; 2 -- 4; 2 -> red ";
+			case 2: return "red -> 2; 2 -> 3; 2 -- 4; 2 -> red; 5 -> 2";
+			case 3: return "red -> red ";
+			case 4: return "red -> 3; 2 -- 4; 2 -> red ";
 		}
 		
 		return "";
@@ -150,12 +156,12 @@ public class InventoryManager implements Serializable{
 		return this.deviceDao.getDeviceList();
 	}
 	
-	public Device altaDevice(String communityRead, String hostName, String iosType, String iosVersion, String ip, String model,
-							String serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable) throws Exception{
+	public Device altaDevice(String communityRead, String hostName, String iosType, String iosVersion, String ip, int model,
+							int serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Red network, Configuration configuration, EquipmentInformation equipmentInformation, Interface interfaz, String enable, Date last_update_date) throws Exception{
 	
 	if (!existeIp(ip)){
 	
-		Device d = new Device(communityRead, hostName, iosType, iosVersion, ip, model, serialNumber, softwareRelease, tipoEquipo, interfaz, red, enable);
+		Device d = new Device();//communityRead, hostName, iosType, iosVersion, ip, model, serialNumber, softwareRelease, tipoEquipo, network, configuration, equipmentInformation, interfaz, enable, last_update_date);
 
 		deviceDao.saveDevice(d);
 		
@@ -187,7 +193,8 @@ public class InventoryManager implements Serializable{
 		return d;
 	}
 	
-	public Device modificarDevice(String communityRead, String hostName, String iosType, String iosVersion, String ip, String model, String serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
+	public Device modificarDevice(String communityRead, String hostName, String iosType, String iosVersion, String ip, int model,
+			int serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Red network, Configuration configuration, EquipmentInformation equipmentInformation, Interface interfaz, String enable, Date last_update_date){
 		Device d = this.getDevice(ip);
 		if (d != null){
 			if (!d.getCommunityRead().equals(communityRead))
@@ -200,20 +207,26 @@ public class InventoryManager implements Serializable{
 				d.setIosVersion(iosVersion);
 			if (!d.getIp().equals(ip))
 				d.setIp(ip);
-			if (d.getModel()!=model)
-				d.setModel(model);
-			if (d.getSerialNumber()!=serialNumber)
-				d.setSerialNumber(serialNumber);
+//			if (d.getModel()!=model)
+//				d.setModel(model);
+//			if (d.getSerialNumber()!=serialNumber)
+//				d.setSerialNumber(serialNumber);
 			if (!d.getSoftwareRelease().equals(softwareRelease))
 				d.setSoftwareRelease(softwareRelease);
-//			if (!d.getTipoEquipo().equals(tipoEquipo))
-//				d.setTipoEquipo(tipoEquipo);
-//			if (!d.getInterface_Device().equals(interfaz))
-//				d.setInterface_Device(interfaz);
-//			if (!d.getRed_Device().equals(red))
-//				d.setRed_Device(red);
-			if (!d.getEnable_Device().equals(enable))
-				d.setEnable_Device(enable);
+			if (d.getId_device_type()!=(tipoEquipo.getId()))
+				d.setId_device_type(tipoEquipo.getId());
+			if (d.getId_network()!= network.getId_network())
+				d.setId_network(network.getId_network());
+			if (d.getId_configuration()!= configuration.getId_configuration())
+				d.setId_configuration(configuration.getId_configuration());
+			if (d.getId_equipment_info()!= equipmentInformation.getEquipment_id())
+				d.setId_equipment_info(equipmentInformation.getEquipment_id());
+//			if (d.getId_interface()!=(interfaz.getId()))
+//				d.setId_interface(interfaz.getId());
+			if (!d.getEnable().equals(enable))
+				d.setEnable(enable);
+			if (!d.getLast_update_date().equals(last_update_date))
+				d.setLast_update_date(last_update_date);
 			
 			this.deviceDao.updateDevice(d);
 		}
@@ -221,8 +234,9 @@ public class InventoryManager implements Serializable{
 		return d;
 	}
 	
-	public Device modificarDevice(int id_device, String communityRead, String hostName, String iosType, String iosVersion, String ip, String model, String serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
-		Device d = this.getDevice(id_device);
+	public Device modificarDevice(int device_id, String communityRead, String hostName, String iosType, String iosVersion, String ip, int model,
+			int serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Red network, Configuration configuration, EquipmentInformation equipmentInformation, Interface interfaz, String enable, Date last_update_date){
+		Device d = this.getDevice(device_id);
 		if (d != null){
 			if (!d.getCommunityRead().equals(communityRead))
 				d.setCommunityRead(communityRead);
@@ -234,22 +248,26 @@ public class InventoryManager implements Serializable{
 				d.setIosVersion(iosVersion);
 			if (!d.getIp().equals(ip))
 				d.setIp(ip);
-			if (d.getModel()!=model)
-				d.setModel(model);
-			if (d.getSerialNumber()!=serialNumber)
-				d.setSerialNumber(serialNumber);
+//			if (d.getModel()!=model)
+//				d.setModel(model);
+//			if (d.getSerialNumber()!=serialNumber)
+//				d.setSerialNumber(serialNumber);
 			if (!d.getSoftwareRelease().equals(softwareRelease))
 				d.setSoftwareRelease(softwareRelease);
-//			if (!d.getTipoEquipo().equals(tipoEquipo))
-//				d.setTipoEquipo(tipoEquipo);
-//			if (!d.getInterface_Device().equals(interfaz))
-//				d.setInterface_Device(interfaz);
-//			if (!d.getRed_Device().equals(red))
-//				d.setRed_Device(red);
-			if (!d.getEnable_Device().equals(enable))
-				d.setEnable_Device(enable);
-			
-			this.deviceDao.updateDevice(d);
+			if (d.getId_device_type()!=(tipoEquipo.getId()))
+				d.setId_device_type(tipoEquipo.getId());
+			if (d.getId_network()!= network.getId_network())
+				d.setId_network(network.getId_network());
+			if (d.getId_configuration()!= configuration.getId_configuration())
+				d.setId_configuration(configuration.getId_configuration());
+			if (d.getId_equipment_info()!= equipmentInformation.getEquipment_id())
+				d.setId_equipment_info(equipmentInformation.getEquipment_id());
+//			if (d.getId_interface()!=(interfaz.getId()))
+//				d.setId_interface(interfaz.getId());
+			if (!d.getEnable().equals(enable))
+				d.setEnable(enable);
+			if (!d.getLast_update_date().equals(last_update_date))
+				d.setLast_update_date(last_update_date);
 		}
 		
 		return d;
@@ -266,6 +284,15 @@ public class InventoryManager implements Serializable{
 	
 	public Red getRed(String net) {return redDao.getRed(net);}
 	
+	public Red getRed(int net) {
+		return redDao.getRed(net);
+	}
+	
+	public Configuration getConfiguration (int id_configuration){return configurationDao.getConfiguration(id_configuration);}
+	
+	public EquipmentInformation getEquipmentInformation (int id_equipment_information){
+		return new EquipmentInformation();//equipmentInformationDao.getEquipmentInformation(id_equipment_information);
+	}
 	/*
 	 *
 	 *
@@ -352,5 +379,45 @@ public class InventoryManager implements Serializable{
 		return i;
 	}
 	
+	public List<Red> getRedList(){
+		return this.redDao.getRedList();
+	}
 	
+	public void eliminarRed(int id_red){
+		this.redDao.deleteRed(id_red);
+	}
+	
+	public Red getRedById(int redId){
+		return this.redDao.getRed(redId);
+	}
+	
+	public Red modificarRed(Integer id, String network, byte enabled, String description){
+		Red r = this.getRed(id);
+		if (r != null){
+			if (!r.getNetwork().equals(network))
+				r.setNetwork(network);
+			if (r.getEnabled() != enabled)
+				r.setEnabled(enabled);
+			if (!r.getDescription().equals(description))
+				r.setDescription(description);
+			
+			this.redDao.updateRed(r);
+		}
+		return r;
+	}
+	
+	public Red crearRed(String network, byte enabled, String description){
+		Red r = new Red();
+		r.setNetwork(network);
+		r.setEnabled(enabled);
+		r.setDescription(description);
+		
+		try {
+			this.redDao.saveRed(r);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return r; 
+	}
 }

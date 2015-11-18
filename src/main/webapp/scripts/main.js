@@ -99,6 +99,23 @@ function deleteInterfaz(idTipoEquipo){
 	window.location.replace("/TMNIntegralWeb/eliminarInterface.htm?iId=" + idTipoEquipo);
 }
 
+function displayRed(rId, isEdition){
+	window.location.replace("/TMNIntegralWeb/displayRed.htm?redId=" + rId + "&edit=" + isEdition);
+}
+
+function nuevaRed(){
+	window.location.replace("/TMNIntegralWeb/nuevaRed.htm");
+}
+
+function displayLisRed(){
+	window.location.replace("/TMNIntegralWeb/listRed.htm");
+}
+
+function deleteRed(idRed){
+	window.location.replace("/TMNIntegralWeb/eliminarRed.htm?rId=" + idRed);
+}
+
+
 function setEnableFields(isEnabled){
 	$('input[type=text]').each(function () {
 		this.disabled = !isEnabled ;

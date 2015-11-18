@@ -30,7 +30,7 @@ public class JPADeviceDaoTest {
     @Test
     public void testGetRoleById() {
     	Device device = deviceDao.getDevice(1);
-    	assertEquals(device.getId_device(), 1, 0);
+    	assertEquals(device.getDevice_id(), 1, 0);
     }
 
     @Test
@@ -42,15 +42,15 @@ public class JPADeviceDaoTest {
     @Test
     public void testSaveNewDevice() {
     	TipoEquipo te = tipoEquipoDao.getTipoEquipo(1);
-        Device d = new Device("TEST", "TEST", "TEST","TEST","TEST","TEST","TEST","TEST", te, null, null, true);
+        Device d = new Device();//"TEST", "TEST", "TEST","TEST","TEST","TEST","TEST","TEST", te, null, null, true);
         try {
 			deviceDao.saveDevice(d);
 			
 			Device tmpdevice = deviceDao.getDevice(999);
 			assertNotNull(tmpdevice);
-			assertEquals(tmpdevice.getId_device(), 999, 0);
+			assertEquals(tmpdevice.getDevice_id(), 999, 0);
 			
-			deviceDao.deleteDevice(d.getId_device());
+			deviceDao.deleteDevice(d.getDevice_id());
 		} catch (Exception e) {
 			//device duplicado
 			System.out.println(e.getMessage());

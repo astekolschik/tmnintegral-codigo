@@ -21,6 +21,7 @@
 				<ul>
 					<li><a href="listTipoEquipos.htm">Tipos de Equipo</a></li>
 				    <li><a href="listInterface.htm">Interfaces</a></li> 
+				    <li><a href="listRed.htm">Redes</a></li>
 					<li><a href="displayNetwork.htm">Topología de Red</a></li>
 				</ul>
 			</li>
