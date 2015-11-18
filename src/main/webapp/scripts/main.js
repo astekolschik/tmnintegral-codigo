@@ -155,3 +155,15 @@ function setTipoEquiposSelectValues(dts){
 function setdtValues(){
     $("#dtValues").val($("#dt-select").val());
 }
+
+function validarInterface(){
+	if ($('#device-select').val() == -1)
+		return false;
+	
+	$('#device').val($('#device-select').val());
+	return true;
+}
+
+function setEquipo(idDev){
+	$('#device-select').val(idDev);
+}

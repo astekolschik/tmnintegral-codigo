@@ -1,7 +1,7 @@
 package com.tmnintegral.domain;
 
 import java.io.Serializable;
-
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,14 +12,14 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="Device") 
+@Table(name="device") 
 public class Device implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
     @Column(name = "device_id")
-	private int id_device; 
+	private int device_id; 
 	private String communityRead;
 	private String hostName;
 	private String iosType;
@@ -28,22 +28,45 @@ public class Device implements Serializable {
 	private String model;
 	private String serialNumber;
 	private String softwareRelease;
-//	private TipoEquipo tipoEquipo;
-//	private Interface interfaz;
-//	private Red red;
-	//private Configuration configuration;
-	//private EquipmentInfo equipmentInfo;
-	private Boolean enable;
+	private Integer id_device_type;
+	private Integer id_network;
+	private Integer id_configuration;
+	private Integer id_equipment_info;
+	private String enable;
+	private Date last_update_date;
+	
 	
 	
 	public Device(){
 		super();
 	}
 	
-	public Device(String communityRead, String hostName, String iosType, String iosVersion, String ip, String model,
-			String serialNumber, String softwareRelease, TipoEquipo tipoEquipo, Interface interfaz, Red red, Boolean enable){
+
+	/**
+	 * Constructor
+	 * @param device_id
+	 * @param communityRead
+	 * @param hostName
+	 * @param iosType
+	 * @param iosVersion
+	 * @param ip
+	 * @param model
+	 * @param serialNumber
+	 * @param softwareRelease
+	 * @param id_device_type
+	 * @param id_network
+	 * @param id_configuration
+	 * @param id_equipment_info
+	 * @param id_interface
+	 * @param enable
+	 * @param last_update_date
+	 */
+	public Device(int device_id, String communityRead, String hostName, String iosType, String iosVersion, String ip,
+			String model, String serialNumber, String softwareRelease, Integer id_device_type, Integer id_network,
+			Integer id_configuration, Integer id_equipment_info, String enable,
+			Date last_update_date) {
 		super();
-		//this.id_device = id_device;
+		this.device_id = device_id;
 		this.communityRead = communityRead;
 		this.hostName = hostName;
 		this.iosType = iosType;
@@ -52,68 +75,283 @@ public class Device implements Serializable {
 		this.model = model;
 		this.serialNumber = serialNumber;
 		this.softwareRelease = softwareRelease;
-//		this.tipoEquipo = tipoEquipo;
-//		this.interfaz = interfaz;
-//		this.red = red;
-		//this.configuration = configuration;
-		//this.equipmentInfo = equipmentInfo;
+		this.id_device_type = id_device_type;
+		this.id_network = id_network;
+		this.id_configuration = id_configuration;
+		this.id_equipment_info = id_equipment_info;
 		this.enable = enable;
-		
+		this.last_update_date = last_update_date;
+	}
+
+
+	/**
+	 * @return the device_id
+	 */
+	public int getDevice_id() {
+		return device_id;
+	}
+
+
+
+	/**
+	 * @param device_id the device_id to set
+	 */
+	public void setDevice_id(int device_id) {
+		this.device_id = device_id;
+	}
+
+
+
+	/**
+	 * @return the communityRead
+	 */
+	public String getCommunityRead() {
+		return communityRead;
+	}
+
+
+
+	/**
+	 * @param communityRead the communityRead to set
+	 */
+	public void setCommunityRead(String communityRead) {
+		this.communityRead = communityRead;
+	}
+
+
+
+	/**
+	 * @return the hostName
+	 */
+	public String getHostName() {
+		return hostName;
+	}
+
+
+
+	/**
+	 * @param hostName the hostName to set
+	 */
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
+	}
+
+
+
+	/**
+	 * @return the iosType
+	 */
+	public String getIosType() {
+		return iosType;
+	}
+
+
+
+	/**
+	 * @param iosType the iosType to set
+	 */
+	public void setIosType(String iosType) {
+		this.iosType = iosType;
+	}
+
+
+
+	/**
+	 * @return the iosVersion
+	 */
+	public String getIosVersion() {
+		return iosVersion;
+	}
+
+
+
+	/**
+	 * @param iosVersion the iosVersion to set
+	 */
+	public void setIosVersion(String iosVersion) {
+		this.iosVersion = iosVersion;
+	}
+
+
+
+	/**
+	 * @return the ip
+	 */
+	public String getIp() {
+		return ip;
+	}
+
+
+
+	/**
+	 * @param ip the ip to set
+	 */
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+
+
+	/**
+	 * @return the model
+	 */
+	public String getModel() {
+		return model;
+	}
+
+
+
+	/**
+	 * @param model the model to set
+	 */
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+
+
+	/**
+	 * @return the serialNumber
+	 */
+	public String getSerialNumber() {
+		return serialNumber;
+	}
+
+
+
+	/**
+	 * @param serialNumber the serialNumber to set
+	 */
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+
+
+
+	/**
+	 * @return the softwareRelease
+	 */
+	public String getSoftwareRelease() {
+		return softwareRelease;
+	}
+
+
+
+	/**
+	 * @param softwareRelease the softwareRelease to set
+	 */
+	public void setSoftwareRelease(String softwareRelease) {
+		this.softwareRelease = softwareRelease;
+	}
+
+
+
+	/**
+	 * @return the id_device_type
+	 */
+	public Integer getId_device_type() {
+		return id_device_type;
+	}
+
+
+
+	/**
+	 * @param id_device_type the id_device_type to set
+	 */
+	public void setId_device_type(Integer id_device_type) {
+		this.id_device_type = id_device_type;
+	}
+
+
+
+	/**
+	 * @return the id_network
+	 */
+	public Integer getId_network() {
+		return id_network;
+	}
+
+
+
+	/**
+	 * @param id_network the id_network to set
+	 */
+	public void setId_network(Integer id_network) {
+		this.id_network = id_network;
+	}
+
+
+
+	/**
+	 * @return the id_configuration
+	 */
+	public Integer getId_configuration() {
+		return id_configuration;
+	}
+
+
+
+	/**
+	 * @param id_configuration the id_configuration to set
+	 */
+	public void setId_configuration(Integer id_configuration) {
+		this.id_configuration = id_configuration;
+	}
+
+
+
+	/**
+	 * @return the id_equipment_info
+	 */
+	public Integer getId_equipment_info() {
+		return id_equipment_info;
+	}
+
+
+
+	/**
+	 * @param id_equipment_info the id_equipment_info to set
+	 */
+	public void setId_equipment_info(Integer id_equipment_info) {
+		this.id_equipment_info = id_equipment_info;
+	}
+
+
+
+	/**
+	 * @return the enable
+	 */
+	public String getEnable() {
+		return enable;
+	}
+
+
+
+	/**
+	 * @param enable the enable to set
+	 */
+	public void setEnable(String enable) {
+		this.enable = enable;
+	}
+
+
+
+	/**
+	 * @return the last_update_date
+	 */
+	public Date getLast_update_date() {
+		return last_update_date;
+	}
+
+
+
+	/**
+	 * @param last_update_date the last_update_date to set
+	 */
+	public void setLast_update_date(Date last_update_date) {
+		this.last_update_date = last_update_date;
 	}
 
 	
-
-	public int getId_device() {return id_device;}
-
-	public void setId_device(int id_device) {this.id_device = id_device;}
-
-	public String getCommunityRead() {return communityRead;}
 	
-	public void setCommunityRead(String cr) {this.communityRead = cr;}
-	
-	public String getHostName(){return hostName;}
-	
-	public void setHostName(String hostName){this.hostName = hostName;}
-	
-	public String getIosType(){return iosType;}
-	
-	public void setIosType(String iosType){this.iosType = iosType;}
-	
-	public String getIosVersion(){return iosVersion;}
-	
-	public void setIosVersion(String iosVersion){this.iosVersion = iosVersion;}
-	
-	public String getIp(){return ip;}
-	
-	public void setIp(String ip){this.ip = ip;}
-	
-	public String getModel(){return model;}
-	
-	public void setModel(String model){this.model = model;}
-	
-	public String getSerialNumber(){return serialNumber;}
-	
-	public void setSerialNumber(String sn){this.serialNumber = sn;}
-	
-	public String getSoftwareRelease(){return softwareRelease;}
-	
-	public void setSoftwareRelease(String sr){this.softwareRelease = sr;}
-	
-//	public TipoEquipo getTipoEquipo(){return tipoEquipo;}
-//	
-//	public void setTipoEquipo(TipoEquipo te){this.tipoEquipo = te;}
-	
-//	public Interface getInterface_Device(){return this.interfaz;}
-//	
-//	public void setInterface_Device(Interface interfaz){this.interfaz = interfaz;}
-	
-//	public Red getRed_Device(){return red;}
-//	
-//	public void setRed_Device(Red red){this.red = red;}
-//	
-	public Boolean getEnable_Device(){return enable;}
-	
-	public void setEnable_Device(Boolean enable){this.enable = enable;}
-	
-	
-	}
+}

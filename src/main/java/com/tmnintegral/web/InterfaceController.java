@@ -47,6 +47,7 @@ public class InterfaceController {
 		myModel.put("interfaceObj", i);
 		myModel.put("edit", true);
 		myModel.put("displayEdit", "");
+		myModel.put("listEquipos", this.im.getDeviceList());
 		return new ModelAndView("inventory/altaInterface", "model", myModel);
 	}
     
@@ -58,6 +59,8 @@ public class InterfaceController {
 		Interface i = im.getInterface(
 				Integer.parseInt((String)request.getParameter("iId")));
 		myModel.put("interfaceObj", i);
+		myModel.put("listEquipos", this.im.getDeviceList());
+		
 		if (((String)request.getParameter("edit")).equals("true")){
 			myModel.put("edit", true);
 			myModel.put("displayEdit", "");

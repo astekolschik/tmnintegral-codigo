@@ -18,7 +18,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
 	</head>
-	<body onload="setMenuValue('inventory'); setEnableFields(${model.edit})">
+	<body onload="setMenuValue('inventory'); setEnableFields(${model.edit}); setEquipo(${model.interfaceObj.id_device})">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -35,7 +35,8 @@
 				<div class="container">
 						<section class="8u 16u(narrower)">
 							<h3>Interfaz</h3>
-							<form action="/TMNIntegralWeb/updateInterface.htm" method="post">
+							<form action="/TMNIntegralWeb/updateInterface.htm" method="post" 
+									onsubmit="return validarInterface();">
 								<div class="row 100%">
 									<c:if test="${model.interfaceObj.id != 0}">
 										<div class="4u 8u(mobilep)">
@@ -61,7 +62,7 @@
 										<label>Nombre</label>
 									</div>
 									<div class="8u 16u(mobilep)">
-										<input type="text" id="name" name="name" value="${model.interfaceObj.name}" placeholder="Nombre" />
+										<input required="required" type="text" id="name" name="name" value="${model.interfaceObj.name}" placeholder="Nombre" />
 									</div>
 									<div class="4u 8u(mobilep)">
 										<label>Shelf</label>
@@ -91,13 +92,21 @@
 										<label>Tipo</label>
 									</div>
 									<div class="8u 16u(mobilep)">
-										<input type="text" id="type" name="type" value="${model.interfaceObj.type}" placeholder="Tipo" />
+										<input required="required" type="text" id="type" name="type" value="${model.interfaceObj.type}" placeholder="Tipo" />
 									</div>
 									<div class="4u 8u(mobilep)">
 										<label>Equipo</label>
 									</div>
 									<div class="8u 16u(mobilep)">
-										<input type="text" id="device" name="device" value="${model.interfaceObj.id_device}" placeholder="Equipo" />
+										<select id="device-select">
+											<option value="-1">Seleccione el equipo</option>
+											<c:forEach items="${model.listEquipos}" var="e">
+												<option value="${e.device_id}">${e.hostName} (${e.ip})</option>
+											</c:forEach>
+										</select>
+										<input type="hidden" id="device" name="device" value="${model.interfaceObj.id_device}" placeholder="Equipo" />
+									</div>
+									<div class="8u 16u(mobilep)">
 									</div>
 									<div class="4u 8u(mobilep)">
 										<label>IF Index</label>

@@ -31,10 +31,10 @@ public class JPADeviceDao implements DeviceDao{
 	
     @Transactional(readOnly = true)
     @SuppressWarnings("unchecked")
-	public Device getDevice(int id_device) throws NoResultException{
+	public Device getDevice(int device_id) throws NoResultException{
     	Device d = null;
     	try{
-    		d = (Device) em.createQuery("select d from Device d where d.id_device = " + id_device).getSingleResult();
+    		d = (Device) em.createQuery("select d from Device d where d.device_id = " + device_id).getSingleResult();
     	}catch(NoResultException e){
     		//log ("No se encontro el rol con id: " + roleId);
     	}
@@ -56,15 +56,15 @@ public class JPADeviceDao implements DeviceDao{
     @Transactional(readOnly = true)
     @SuppressWarnings("unchecked")
 	public List<Device> getDeviceList() {
-		return em.createQuery("select d from Device d order by d.id_device").getResultList();
+		return em.createQuery("select d from Device d order by d.device_id").getResultList();
 	}
 
     @Transactional(readOnly = false)
     @SuppressWarnings("unchecked")
 	public void saveDevice(Device d) throws Exception {
-    	if (this.getDevice(d.getId_device()) == null){
-    		int id_device = (Integer) em.createQuery("select max(id_device) + 1 from Device").getSingleResult();
-    		d.setId_device(id_device);
+    	if (this.getDevice(d.getDevice_id()) == null){
+    		int device_id = (Integer) em.createQuery("select max(device_id) + 1 from Device").getSingleResult();
+    		d.setDevice_id(device_id);
     		em.merge(d);
     	}else{
     		throw new Exception("El Device con ese id ya existe");
@@ -87,7 +87,7 @@ public class JPADeviceDao implements DeviceDao{
     @Transactional(readOnly = false)
     @SuppressWarnings("unchecked")
 	public void deleteDevice(int id_device) {
-		em.createQuery("delete from Device d where d.id_device=" + id_device).executeUpdate();
+		em.createQuery("delete from Device d where d.device_id=" + id_device).executeUpdate();
 	}
     
     @Transactional(readOnly = false)

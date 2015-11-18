@@ -256,7 +256,13 @@ public class InventoryManager implements Serializable{
 	}
 	public TipoEquipo getTipoEquipo(int id_tipoEquipo) {return tipoEquipoDao.getTipoEquipo(id_tipoEquipo);}
 	
-	public Interface getInterface(String name) {return interfaceDao.getInterface(name);}
+	public Interface getInterface(int iId) {
+		return interfaceDao.getInterface(iId);
+	}
+	
+	public Interface getInterface(String name) {
+		return interfaceDao.getInterface(name);
+	}
 	
 	public Red getRed(String net) {return redDao.getRed(net);}
 	
