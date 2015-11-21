@@ -33,12 +33,13 @@
 				
 				<div class="container">
 						<h3>Reporte</h3>
-						<section>
-							<div class="row" style="width: 1000px;height: 700px; margin-left: 30px;" id="div-reporte">
+						<section style="width: 1400px">
+							<div class="row" style="width: 1300px;height: 700px; margin-left: 30px;" id="div-reporte">
 							</div>
 						</section>
-						<section>
-							<div class="row" style="width: 500px;height: 700px; margin-left: 30px;">
+						<h3>Información detallada</h3>
+						<section style="width: 1400px">
+							<div class="row" style="width: 1000px;height: 700px; margin-left: 30px;">
 								<table id="reporte-table">
 									<thead>
 										<tr>

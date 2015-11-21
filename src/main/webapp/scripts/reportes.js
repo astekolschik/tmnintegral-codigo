@@ -44,13 +44,13 @@ function generarGrafico(data) {
 	            bottom: 30,
 	            left: 50
 	        },
-	        width = 800 - margin.left - margin.right,
+	        width = 1300 - margin.left - margin.right,
 	            height = 700 - margin.top - margin.bottom;
 
 	        var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S.%L").parse;
 
 	        var x = d3.time.scale()
-	            .range([0, 600]);
+	            .range([0, 1000]);
 
 	        var y = d3.scale.linear()
 	            .range([500, 0]);
@@ -111,7 +111,7 @@ function generarGrafico(data) {
 	            .attr("y", 6)
 	            .attr("dy", ".71em")
 	            .style("text-anchor", "end")
-	            .text("Consumo");
+	            .text("(En MB)");
 
 	        var city = svg.selectAll(".equipment")
 	            .data(equipments)
