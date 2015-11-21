@@ -26,13 +26,13 @@
 					<li><a href="displayNetwork.htm">Topología de Red</a></li>
 				</ul>
 			</li>
-			<li id="menu-configuracion">
+			<!-- <li id="menu-configuracion">
 				<a href="#">Configuración</a>
 				<ul>
 					<li><a href="listComandos.htm">Comandos</a></li>
 					<li><a href="restoreConfiguration.htm">Restaurar</a></li>
 				</ul>
-			</li>
+			</li> -->
 			<li id="menu-reportes">
 				<a href="#">Monitoreo</a>
 				<ul>
