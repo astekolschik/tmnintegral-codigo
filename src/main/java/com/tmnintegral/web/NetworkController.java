@@ -3,7 +3,10 @@
  */
 package com.tmnintegral.web;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -118,6 +121,31 @@ public class NetworkController {
 			this.im.modificarRed(Integer.parseInt(idRed), network, Byte.parseByte(enabled), description);
 		else
 			this.im.crearRed(network, Byte.parseByte(enabled), description);
+		
+		return this.listRed(request, response);
+	}
+	
+	@RequestMapping(value="/callDiscoveryPgm.htm")
+	public ModelAndView discoveryProgram(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+		
+		
+		System.out.println("Llamada al programa que ejecuta el discovery de red.");
+		//ejemplo para llamar a un pograma
+		/*Process process = new ProcessBuilder(
+				"C:\\PathToExe\\MyExe.exe","param1","param2").start();*/
+
+		Process process = Runtime.getRuntime().exec("cmd /c dir"); 
+
+		InputStream is = process.getInputStream();
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
+
+		String line;
+		while ((line = br.readLine()) != null) {
+		  System.out.println(line);
+		}
+
 		
 		return this.listRed(request, response);
 	}

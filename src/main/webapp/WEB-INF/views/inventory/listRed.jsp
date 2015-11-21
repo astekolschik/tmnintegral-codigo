@@ -64,6 +64,7 @@
 							<div class="row 100%">
 								<ul class="actions">
 									<li><input type="button" class="button alt" value="Nuevo" onclick="nuevaRed();" /></li>
+									<li><input type="button" class="button alt" value="Descubrir Redes/Elementos" onclick="callDiscoveryPgm();" /></li>
 								</ul>
 							</div>
 						</section>

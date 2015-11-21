@@ -219,3 +219,7 @@ function validarInterface(){
 function setEquipo(idDev){
 	$('#device-select').val(idDev);
 }
+
+function callDiscoveryPgm(){
+	window.location.replace("/TMNIntegralWeb/callDiscoveryPgm.htm");	
+}
