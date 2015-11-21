@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ import com.tmnintegral.repository.DeviceDao;
 import com.tmnintegral.repository.InterfaceDao;
 import com.tmnintegral.repository.RedDao;
 import com.tmnintegral.repository.TipoEquipoDao;
+import com.tmnintegral.repository.TopologiaDao;
 
 /**
  * @author Agustina/Martin
@@ -41,6 +43,8 @@ public class InventoryManager implements Serializable{
 	private RedDao redDao;
 	@Autowired
 	private ConfigurationDao configurationDao;
+	@Autowired
+	private TopologiaDao topologiaDao;
 
 	/**
 	 * Devuelve la lista de los tipos de equipo
@@ -132,15 +136,8 @@ public class InventoryManager implements Serializable{
 		this.tipoEquipoDao.deleteTipoEquipo(idTe);
 	}
 	
-	public String obtenerTopologiaDeRed(int netId){
-		switch(netId){
-			case 1: return "red -> red -> 2; 2 -> 3; 2 -- 4; 2 -> red ";
-			case 2: return "red -> 2; 2 -> 3; 2 -- 4; 2 -> red; 5 -> 2";
-			case 3: return "red -> red ";
-			case 4: return "red -> 3; 2 -- 4; 2 -> red ";
-		}
-		
-		return "";
+	public JSONObject obtenerTopologiaDeRed(){
+		return this.topologiaDao.getTopologia();
 	}
 	
 	/*
@@ -466,5 +463,12 @@ public class InventoryManager implements Serializable{
 		}
 		
 		return d;
+	}
+
+	/**
+	 * @param topologiaDao the topologiaDao to set
+	 */
+	public void setTopologiaDao(TopologiaDao topologiaDao) {
+		this.topologiaDao = topologiaDao;
 	}
 }

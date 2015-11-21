@@ -18,7 +18,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	
 	</head>
-	<body onload="setMenuValue('inventory');">
+	<body onload="setMenuValue('inventory');mostrarTopologiaConImagenes(${model.networkGraph});">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -35,26 +35,10 @@
 				<div class="container">
 						<section class="31u 24u(narrower)">
 							<h3>Topología de la red</h3>
-							<div class="4u 8u(mobilep)">
-								<label>Seleccione la red que desea visualizar:</label>
-							</div>
-							<br/><br/>
-							<div class="row 100%">
-								<div class="row" style="width: 30%; margin-left: 10px">
-									<select multiple id="net-select" style="width: 200px" onchange="mostrarTopologiaConImagenes();">
-										<option value="-1">Ninguna</option>
-										<option value="1">Red 1</option>
-										<option value="2">Red 2</option>
-										<option value="3">Red 3</option>
-										<option value="4">Red 4</option>
-									</select>
-								</div>
-								<div class="row" style="width: 70%" id="net-container"></div>
-							</div>
+							<div class="row" style="width: 100%" id="net-container"></div>
 						</section>
 					</div>
 				</div>
-
 			<!-- Footer -->
 			<%@ include file="/WEB-INF/views/footer.jsp" %>
 		</div>
