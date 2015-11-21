@@ -36,6 +36,7 @@
 								<thead>
 									<tr>
 										<td>Elemento</td>
+										<td>Tipo de Alarma</td>
 										<td>Última actualización</td>
 									</tr>
 								</thead>
@@ -43,6 +44,7 @@
 									<c:forEach items="${model.alarmas}" var="a">
 										<tr>
 											<td>${a.elementName}</td>
+											<td>${a.valor}</td>
 											<td>${a.lastUpdateDate}</td>
 										</tr>
 									</c:forEach>
