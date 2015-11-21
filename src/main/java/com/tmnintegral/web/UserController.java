@@ -5,6 +5,7 @@ package com.tmnintegral.web;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -35,6 +36,10 @@ public class UserController {
 	@Autowired
 	private UserManager um;
 	
+	private static int REGISTER_ROLE = 3;
+	private static int USER_ROLE = 2;
+	private static int ADMIN_ROLE = 1;
+	
 	@RequestMapping(value="/register.htm")
     public ModelAndView registerUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,7 +55,7 @@ public class UserController {
 			String apellido = request.getParameter("apellido");
 			
 	        try {
-				um.crearUsuario(user, nombre, apellido, email, password, 1);
+				um.crearUsuario(user, nombre, apellido, email, password, REGISTER_ROLE);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				return new ModelAndView("user/register");
@@ -104,5 +109,40 @@ public class UserController {
 		return new ModelAndView("user/deleteUser", "model", myModel);
     }
 
-	
+	@RequestMapping(value="/enableUser.htm")
+    public ModelAndView enableUsers(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+            throws ServletException, IOException {
+
+		Map<String, Object> myModel = new HashMap<String, Object>();
+		List<User> userList = this.um.getUserList();
+		myModel.put("userList", userList);
+		
+		if (request.getParameter("adminUserList") != null){
+			String[] adminUserList = request.getParameter("adminUserList").split(",");
+			String[] enableUserList = request.getParameter("userList").split(",");
+			String[] reportUserList = request.getParameter("reportList").split(",");
+			
+			Iterator<User> uIterator = userList.iterator();
+			while (uIterator.hasNext()){
+				User u = uIterator.next();
+				if (isInList(reportUserList, u.getUser_name()))
+					u.setRole_id(REGISTER_ROLE);
+				if (isInList(enableUserList, u.getUser_name()))
+					u.setRole_id(USER_ROLE);
+				if (isInList(adminUserList, u.getUser_name()))
+					u.setRole_id(ADMIN_ROLE);
+				this.um.updateUser(u);
+			}
+		}
+		return new ModelAndView("user/enableUser", "model", myModel);
+    }
+
+	private boolean isInList(String[] list, String value){
+		for (int i=0; i<list.length; i++){
+			if (list[i].equals(value))
+				return true;
+		}
+		return false;
+	}
 }
+

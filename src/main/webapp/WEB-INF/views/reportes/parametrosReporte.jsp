@@ -61,7 +61,7 @@
 												<input type="hidden" name="lista-equipos-value" id="lista-equipos-value">
 												<select multiple id="nombre-equipo" name="nombre-equipo" style="width: 350px">
 													<c:forEach items="${model.devices}" var="equipo">
-														<option value="${equipo.id_device}">${equipo.hostName} (${equipo.ip})</option>
+														<option value="${equipo.device_id}">${equipo.hostName} (${equipo.ip})</option>
 													</c:forEach>
 												</select>
 											</div>

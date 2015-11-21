@@ -122,6 +122,14 @@ public class UserManager implements Serializable{
 	}
 	
 	/**
+	 * 
+	 * @param u
+	 */
+	public void updateUser(User u){
+		this.userDao.updateUser(u);
+	}
+	
+	/**
 	 * Genera una nueva contraseña para el usuario
 	 * @param username
 	 * @return

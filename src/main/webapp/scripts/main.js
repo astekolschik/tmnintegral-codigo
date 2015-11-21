@@ -51,6 +51,25 @@ function eliminarUsuarios(){
 	}
 }
 
+function actualizarUsuarios(){
+	var adminList = [];
+	$("input:checkbox[name=adminCheck]:checked").each(function(){
+	    adminList.push($(this).val());
+	});
+	
+	var userList = [];
+	$("input:checkbox[name=userCheck]:checked").each(function(){
+	    userList.push($(this).val());
+	});
+	
+	var reportList = [];
+	$("input:checkbox[name=reportCheck]:checked").each(function(){
+	    reportList.push($(this).val());
+	});
+
+	window.location.replace("/TMNIntegralWeb/enableUser.htm?adminUserList=" + adminList + "&userList=" + userList + "&reportList=" + reportList);
+}
+
 function displayTipoEquipo(teId, isEdition){
 	window.location.replace("/TMNIntegralWeb/displayTipoEquipo.htm?teId=" + teId + "&edit=" + isEdition);
 }
